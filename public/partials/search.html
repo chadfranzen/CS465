@@ -1,5 +1,14 @@
-<md-toolbar layout-align="center">
+<md-toolbar class="md-medium-tall" layout-align="center">
   <div class="md-toolbar-tools" layout="column" layout-align="center center">
+    <md-input-container class="search-input">
+      <label>Keywords</label>
+      <input type="text">
+    </md-input-container>
+    <md-input-container class="search-input">
+      <input places-auto-complete type="text">
+    </md-input-container>
   </div>
 </md-toolbar>
-<ng-map flex center="[40.74, -74.18]" default-style="false"></ng-map>
+<div id="map-container" flex>
+  <ng-map id="searchmap" disable-default-u-i="true" default-style="false" center="[40.74, -74.18]"></ng-map>
+</div>
