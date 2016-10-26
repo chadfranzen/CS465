@@ -12,6 +12,13 @@
   padding: 12px 10px;
   text-align: center;
 }
+.md-nav-item .md-button {
+  padding-top: 6px;
+  line-height: 19px;
+}
+.md-nav-item .fa {
+  font-size: 18px;
+}
 
 /* Search */
 .search-input {
