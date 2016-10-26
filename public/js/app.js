@@ -1,8 +1,8 @@
 var app = angular.module('App', ['ngMaterial', 'ngRoute', 'ngMap']);
 
 app.config(function($mdThemingProvider, $routeProvider) {
-  $mdThemingProvider.theme('default')
-    .primaryPalette('teal');
+  $mdThemingProvider.theme('light');
+  $mdThemingProvider.enableBrowserColor();
 
   $routeProvider
     .when('/discover', {

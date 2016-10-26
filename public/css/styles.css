@@ -23,3 +23,37 @@
 .search-input .md-errors-spacer {
   display: none;
 }
+#results {
+  position: relative;
+}
+.list-btn {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+#searchmap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.expandable {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+.search-list {
+  margin-top: 35px;
+}
+.expand-button {
+  min-height: 0px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+.date {
+  font-size: 14px;
+  margin: 0px 10px;
+}
+.md-datepicker-button {
+  display: none;
+}
