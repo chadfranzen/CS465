@@ -58,7 +58,12 @@
   <!-- Map View -->
   <ng-map ng-hide="listView" id="searchmap"
     disable-default-u-i="true" default-style="false"
-    center="[40.74, -74.18]"></ng-map>
+    center="current-position"
+    geo-fallback-center="[40.74, -74.18]">
+    <marker ng-repeat="result in results" id="{{$index}}"
+      position="{{result.locations[0].lat}},{{result.locations[0].lng}}"
+      on-click="clickedMarker()"></marker>
+  </ng-map>
 
   <!-- List View -->
   <md-content class="search-list" flex ng-show="listView">
@@ -75,6 +80,5 @@
 
   <!-- Button -->
   <md-button class="md-fab list-btn" aria-label="FAB" ng-click="listView = !listView">
-    <md-icon md-svg-src="your/icon.svg"></md-icon>
   </md-button>
 </div>

@@ -8,14 +8,23 @@ app.controller('SearchController', function($scope, $timeout, NgMap) {
 
   $scope.results = [
     {
-      title: 'First',
-      description: 'This is a description'
+      title: 'MoMA Trip',
+      description: 'Let\'s go to a museum!',
+      locations: [
+        {"lat":40.7614327,"lng":-73.97762160000002}
+      ]
     }, {
-      title: 'Second',
-      description: 'This is a description'
+      title: 'Jogging in Central Park',
+      description: 'Come get some exercise!',
+      locations: [
+        {"lat":40.7848582,"lng":-73.96965190000003}
+      ]
     }, {
-      title: 'Third',
-      description: 'This is a description'
+      title: 'Night Out at UCB',
+      description: 'Food and comedy!',
+      locations: [
+        {"lat":40.74753,"lng":-73.99763999999999}
+      ]
     }
   ];
 
@@ -29,6 +38,11 @@ app.controller('SearchController', function($scope, $timeout, NgMap) {
 
   $scope.placeChanged = function() {
     map.setCenter(this.getPlace().geometry.location);
+  };
+
+  $scope.clickedMarker = function() {
+    var tour = $scope.results[this.id];
+    console.log(tour);
   };
 });
 
