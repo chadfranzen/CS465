@@ -23,30 +23,18 @@
           <md-datepicker ng-model="endDate"></md-datepicker>
         </md-input-container>
       </div>
-      <div layout="row" layout-wrap>
-        <div flex="50" layout layout-align="center center">
+      <div layout="row">
+        <div flex="50" layout="column" class="categories">
           <md-checkbox>Museums</md-checkbox>
+          <md-checkbox>Architecture</md-checkbox>
+          <md-checkbox>Nature</md-checkbox>
+          <md-checkbox>Food</md-checkbox>
         </div>
-        <div flex="50" layout layout-align="center center">
-          <md-checkbox>Museums</md-checkbox>
-        </div>
-        <div flex="50" layout layout-align="center center">
-          <md-checkbox>Museums</md-checkbox>
-        </div>
-        <div flex="50" layout layout-align="center center">
-          <md-checkbox>Museums</md-checkbox>
-        </div>
-        <div flex="50" layout layout-align="center center">
-          <md-checkbox>Museums</md-checkbox>
-        </div>
-        <div flex="50" layout layout-align="center center">
-          <md-checkbox>Museums</md-checkbox>
-        </div>
-        <div flex="50" layout layout-align="center center">
-          <md-checkbox>Museums</md-checkbox>
-        </div>
-        <div flex="50" layout layout-align="center center">
-          <md-checkbox>Museums</md-checkbox>
+        <div flex="50" layout="column" class="categories">
+          <md-checkbox>Recreation</md-checkbox>
+          <md-checkbox>Fitness</md-checkbox>
+          <md-checkbox>Historical</md-checkbox>
+          <md-checkbox>Nightlife</md-checkbox>
         </div>
       </div>
     </md-toolbar>
@@ -59,10 +47,14 @@
   <ng-map ng-hide="listView" id="searchmap"
     disable-default-u-i="true" default-style="false"
     center="current-position"
-    geo-fallback-center="[40.74, -74.18]">
+    geo-fallback-center="[40.109387, -88.2272456]">
     <marker ng-repeat="result in results" id="{{$index}}"
       position="{{result.locations[0].lat}},{{result.locations[0].lng}}"
       on-click="clickedMarker()"></marker>
+    <custom-marker ng-repeat="result in results"
+      position="{{result.locations[0].lat}},{{result.locations[0].lng}}">
+      <div class="marker-label">{{result.title}}</div>
+    </custom-marker>
   </ng-map>
 
   <!-- List View -->

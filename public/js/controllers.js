@@ -25,6 +25,12 @@ app.controller('SearchController', function($scope, $timeout, NgMap) {
       locations: [
         {"lat":40.74753,"lng":-73.99763999999999}
       ]
+    }, {
+      title: 'Halloween Tour!',
+      description: 'Let\'s get spooky.',
+      locations: [
+        {"lat":40.109387,"lng":-88.2272456}
+      ]
     }
   ];
 

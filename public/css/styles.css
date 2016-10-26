@@ -64,3 +64,14 @@
 .md-datepicker-button {
   display: none;
 }
+.marker-label {
+  position: relative;
+  font-size: 16px;
+  font-weight: bold;
+  bottom: 50px;
+  color: #f75448;
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+}
+.categories {
+  padding: 0 5%;
+}
