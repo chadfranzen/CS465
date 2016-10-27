@@ -2,38 +2,35 @@ app.controller('DiscoverController', function($scope) {
   console.log('DiscoverController running');
 });
 
-app.controller('SearchController', function($scope, $timeout, NgMap) {
+app.controller('SearchController', function($scope, $timeout, NgMap, Tours) {
   console.log('SearchController running');
+
+  var currTime = new Date(Date.now());
+  var nextMonth = new Date(Date.now());
+  nextMonth.setMonth(currTime.getMonth() + 1);
+  $scope.searchParams = {
+    keywords: '',
+    categories: {
+      museums: true,
+      architecture: true,
+      nature: true,
+      food: true,
+      recreation: true,
+      fitness: true,
+      historical: true,
+      nightlife: true
+    },
+    startDate: currTime,
+    endDate: nextMonth
+  };
+
+  var search = _.debounce(function() {
+    $scope.results = Tours.search($scope.searchParams);
+  }, 50);
+
+  $scope.$watch('searchParams', search, true);
+
   var map;
-
-  $scope.results = [
-    {
-      title: 'MoMA Trip',
-      description: 'Let\'s go to a museum!',
-      locations: [
-        {"lat":40.7614327,"lng":-73.97762160000002}
-      ]
-    }, {
-      title: 'Jogging in Central Park',
-      description: 'Come get some exercise!',
-      locations: [
-        {"lat":40.7848582,"lng":-73.96965190000003}
-      ]
-    }, {
-      title: 'Night Out at UCB',
-      description: 'Food and comedy!',
-      locations: [
-        {"lat":40.74753,"lng":-73.99763999999999}
-      ]
-    }, {
-      title: 'Halloween Tour!',
-      description: 'Let\'s get spooky.',
-      locations: [
-        {"lat":40.109387,"lng":-88.2272456}
-      ]
-    }
-  ];
-
   // We have to manually resize the map to fit the flex container.
   NgMap.getMap({id: 'searchmap'}).then(function(ngmap){
     map = ngmap;
@@ -43,12 +40,21 @@ app.controller('SearchController', function($scope, $timeout, NgMap) {
   });
 
   $scope.placeChanged = function() {
-    map.setCenter(this.getPlace().geometry.location);
+    var location = this.getPlace().geometry.location;
+    $scope.searchParams.location = location;
+    map.setCenter(location);
+  };
+
+  $scope.centerChanged = function() {
+    var center = this.getCenter();
+    $scope.searchParams.location = {
+      lat: center.lat(),
+      lng: center.lng()
+    };
   };
 
   $scope.clickedMarker = function() {
     var tour = $scope.results[this.id];
-    console.log(tour);
   };
 });
 

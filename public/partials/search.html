@@ -2,7 +2,7 @@
   <div class="md-toolbar-tools" layout="column" layout-align="center center">
     <md-input-container class="search-input">
       <label>Keywords</label>
-      <input type="text">
+      <input type="text" ng-model="searchParams.keywords">
     </md-input-container>
     <md-input-container class="search-input">
       <input places-auto-complete type="text" on-place-changed="placeChanged()">
@@ -16,25 +16,25 @@
       <div layout="row" layout-align="center">
         <md-input-container class="date">
           <label>From</label>
-          <md-datepicker ng-model="startDate"></md-datepicker>
+          <md-datepicker ng-model="searchParams.startDate"></md-datepicker>
         </md-input-container>
         <md-input-container class="date">
           <label>Until</label>
-          <md-datepicker ng-model="endDate"></md-datepicker>
+          <md-datepicker ng-model="searchParams.endDate"></md-datepicker>
         </md-input-container>
       </div>
       <div layout="row">
         <div flex="50" layout="column" class="categories">
-          <md-checkbox>Museums</md-checkbox>
-          <md-checkbox>Architecture</md-checkbox>
-          <md-checkbox>Nature</md-checkbox>
-          <md-checkbox>Food</md-checkbox>
+          <md-checkbox ng-model="searchParams.categories.museums">Museums</md-checkbox>
+          <md-checkbox ng-model="searchParams.categories.architecture">Architecture</md-checkbox>
+          <md-checkbox ng-model="searchParams.categories.nature">Nature</md-checkbox>
+          <md-checkbox ng-model="searchParams.categories.food">Food</md-checkbox>
         </div>
         <div flex="50" layout="column" class="categories">
-          <md-checkbox>Recreation</md-checkbox>
-          <md-checkbox>Fitness</md-checkbox>
-          <md-checkbox>Historical</md-checkbox>
-          <md-checkbox>Nightlife</md-checkbox>
+          <md-checkbox ng-model="searchParams.categories.recreation">Recreation</md-checkbox>
+          <md-checkbox ng-model="searchParams.categories.fitness">Fitness</md-checkbox>
+          <md-checkbox ng-model="searchParams.categories.historical">Historical</md-checkbox>
+          <md-checkbox ng-model="searchParams.categories.nightlife">Nightlife</md-checkbox>
         </div>
       </div>
     </md-toolbar>
@@ -47,6 +47,7 @@
   <ng-map ng-hide="listView" id="searchmap"
     disable-default-u-i="true" default-style="false"
     center="current-position"
+    on-center-changed="centerChanged()"
     geo-fallback-center="[40.109387, -88.2272456]">
     <marker ng-repeat="result in results" id="{{$index}}"
       position="{{result.locations[0].lat}},{{result.locations[0].lng}}"
