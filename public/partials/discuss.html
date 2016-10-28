@@ -1,0 +1,21 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <md-button class="back-icon" ng-href="#/tour/{{tourId}}">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    </md-button>
+    <div class="discuss-title">
+      {{plan.text | characters:35}}
+    </div>
+  </div>
+</md-toolbar>
+<md-content>
+  <md-list class="thread" ng-repeat="thread in discussion">
+    <md-list-item class="post">
+      {{thread.post.text}}
+    </md-list-item>
+    <md-list-item class="reply" ng-repeat="reply in thread.replies">
+      {{reply.text}}
+    </md-list-item>
+    <md-divider></md-divider>
+  </md-list>
+</md-content>

@@ -65,3 +65,21 @@ app.controller('MyToursController', function($scope) {
 app.controller('CreateController', function($scope) {
   console.log('CreateController running');
 });
+
+app.controller('TourController', function($scope, $routeParams, Tours) {
+  $scope.getWaypoints = function(locations) {
+    return locations.slice(1, locations.length-1).map(function(location) {
+      return {location: location, stopover: true};
+    });
+  };
+  console.log('TourController running');
+  $scope.tour = Tours.getById($routeParams.id);
+});
+
+app.controller('DiscussController', function($scope, $routeParams, Tours) {
+  console.log('DiscussController running');
+  var tour = Tours.getById($routeParams.id);
+  $scope.tourId = $routeParams.id;
+  $scope.plan = tour.plans[$routeParams.planIdx];
+  $scope.discussion = tour.plans[$routeParams.planIdx].discussion;
+});

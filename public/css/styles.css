@@ -75,3 +75,27 @@
 .categories {
   padding: 0 5%;
 }
+
+/* Tour */
+.tour-title {
+  text-align: center;
+}
+.back-icon i {
+  font-size: 22px;
+  position: relative;
+  top: 50%;
+  display: block;
+}
+.plans-header {
+  text-align: center;
+}
+.discuss-icon {
+  margin-right: 10px;
+}
+.tour-description {
+  padding: 20px;
+  text-align: justify;
+}
+.join-btn {
+  margin-bottom: 10px;
+}

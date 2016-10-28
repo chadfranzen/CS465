@@ -61,10 +61,10 @@
   <!-- List View -->
   <md-content class="search-list" flex ng-show="listView">
     <md-list>
-      <md-list-item class="md-2-line" ng-repeat="result in results">
+      <md-list-item ng-href="#/tour/{{result._id}}" class="md-2-line" ng-repeat="result in results">
         <div class="md-list-item-text">
           <h3>{{result.title}}</h3>
-          <p>{{result.description}}</p>
+          <p>{{result.description | characters:45}}</p>
         </div>
         <md-divider></md-divider>
       </md-list-item>

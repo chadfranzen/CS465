@@ -52,18 +52,60 @@ app.factory('Tours', function() {
     }, {
       _id: 3,
       title: 'Halloween Tour!',
-      description: 'Let\'s get spooky.',
+      description: 'Let\'s get spooky. Lorem ipsum dolor sit amet, elementum justo eget dui in, libero in, in et vestibulum parturient consequat molestie. Enim suspendisse ipsum. Suspendisse ipsum duis egestas.',
       locations: [
-        {"lat":40.109387,"lng":-88.2272456}
+        {"lat":40.109387,"lng":-88.2272456},
+        {"lat":40.11380279999999,"lng":-88.22490519999997},
+        {"lat":40.1179765,"lng":-88.2402697}
+      ],
+      plans: [
+        {
+          text: 'Chat at the Union',
+          time: null,
+          discussion: [
+            {
+              post: {
+                creator: {},
+                text: 'Sounds good!'
+              },
+              replies: [
+                {
+                  creator: {},
+                  text: 'Same.'
+                }
+              ]
+            },
+            {
+              post: {
+                creator: {},
+                text: 'I like the Union.'
+              },
+              replies: []
+            }
+          ]
+        },
+        {
+          text: 'Go to Siebel Center',
+          time: null,
+          discussion: []
+        }
       ],
       categories: ['recreation'],
-      time: new Date(1477933200000)
-    }
+      time: new Date(1477933200000),
+      guests: {
+        pending: [
+
+        ],
+        confirmed: [
+
+        ]
+      }
+    },
   ];
 
   return {
     getById: function(id) {
-      return _.findWhere(mockTours, {_id: id});
+      return _.findWhere(mockTours, {_id: Number(id)});
     },
 
     search: function(searchParams) {
