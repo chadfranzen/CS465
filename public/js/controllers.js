@@ -1,8 +1,32 @@
-app.controller('DiscoverController', function($scope) {
+var controllers = angular.module('Controllers', ['ngMaterial', 'ngRoute', 'ngMap', 'Services']);
+
+controllers.controller('AuthController', function($scope, $location, Auth) {
+  $scope.$on('$routeChangeStart', function(event, newUrl) {
+    Auth.waitForFbApi().then(function() {
+      if (newUrl.needsLogin && !Auth.isAuthenticated()) {
+        $location.path('/login');
+      }
+    });
+  });
+
+  $scope.isLoggingIn = function() {
+    return $location.path() === '/login';
+  };
+});
+
+controllers.controller('LoginController', function($rootScope, $location) {
+  $rootScope.$watch('myself', function(myself) {
+    if (myself) {
+      $location.path('discover');
+    }
+  });
+});
+
+controllers.controller('DiscoverController', function($scope) {
   console.log('DiscoverController running');
 });
 
-app.controller('SearchController', function($scope, $timeout, $location, NgMap, Tours) {
+controllers.controller('SearchController', function($scope, $timeout, $location, NgMap, Tours) {
   console.log('SearchController running');
 
   var currTime = new Date(Date.now());
@@ -59,15 +83,15 @@ app.controller('SearchController', function($scope, $timeout, $location, NgMap, 
   };
 });
 
-app.controller('MyToursController', function($scope) {
+controllers.controller('MyToursController', function($scope) {
   console.log('MyToursController running');
 });
 
-app.controller('CreateController', function($scope) {
+controllers.controller('CreateController', function($scope) {
   console.log('CreateController running');
 });
 
-app.controller('TourController', function($scope, $routeParams, $mdDialog, Tours) {
+controllers.controller('TourController', function($scope, $routeParams, $mdDialog, Tours) {
   $scope.getWaypoints = function(locations) {
     return locations.slice(1, locations.length-1).map(function(location) {
       return {location: location, stopover: true};
@@ -85,14 +109,14 @@ app.controller('TourController', function($scope, $routeParams, $mdDialog, Tours
   };
 });
 
-app.controller('ParticipantsController', function($scope, $mdDialog, tour) {
-  console.log(tour);
+controllers.controller('ParticipantsController', function($scope, $mdDialog, tour) {
+  $scope.tour = tour;
   $scope.closeDialog = function() {
     $mdDialog.hide();
-  }
+  };
 });
 
-app.controller('DiscussController', function($scope, $routeParams, Tours) {
+controllers.controller('DiscussController', function($scope, $routeParams, Tours) {
   console.log('DiscussController running');
   var tour = Tours.getById($routeParams.id);
   $scope.tourId = $routeParams.id;

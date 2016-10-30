@@ -1,4 +1,22 @@
-app.factory('Tours', function() {
+var services = angular.module('Services', []);
+
+services.directive('profilePic', function($compile) {
+  return {
+    replace: true,
+    scope: {
+      user: '='
+    },
+    restrict: 'E',
+    link: function($scope, $element, $attrs) {
+      var id = $attrs.user.id;
+      var DOM = angular.element('<img class="profile-pic" ng-src="//graph.facebook.com/' + $scope.user.id + '/picture?type=square&height=100&width=100">');
+      var $e = $compile(DOM)($scope);
+      $element.replaceWith($e);
+    }
+  };
+});
+
+services.factory('Tours', function() {
   // Returns distance between two locations in miles
   // Credit: http://www.geodatasource.com/developers/javascript
   var distance = function(location1, location2) {
@@ -58,6 +76,10 @@ app.factory('Tours', function() {
         {"lat":40.11380279999999,"lng":-88.22490519999997},
         {"lat":40.1179765,"lng":-88.2402697}
       ],
+      creator: {
+        id: 100006483844947,
+        name: 'Violet Zhao',
+      },
       plans: [
         {
           text: 'Chat at the Union',
@@ -65,19 +87,22 @@ app.factory('Tours', function() {
           discussion: [
             {
               post: {
-                creator: {},
+                author: {
+                  id: 1650481413,
+                  name: 'Krishna Dusad',
+                },
                 text: 'Sounds good!'
               },
               replies: [
                 {
-                  creator: {},
+                  author: {},
                   text: 'Same.'
                 }
               ]
             },
             {
               post: {
-                creator: {},
+                author: {},
                 text: 'I like the Union.'
               },
               replies: []
@@ -97,7 +122,14 @@ app.factory('Tours', function() {
 
         ],
         confirmed: [
-
+          {
+            id: 100006483844947,
+            name: 'Violet Zhao',
+          },
+          {
+            id: 1650481413,
+            name: 'Krishna Dusad',
+          }
         ]
       }
     },
@@ -137,3 +169,34 @@ app.factory('Tours', function() {
     }
   };
 });
+
+services.factory('Auth', function($rootScope) {
+  var authStatus;
+  var promise = $.Deferred();
+  return {
+    watchAuthStatusChange: function() {
+      var self = this;
+      FB.Event.subscribe('auth.authResponseChange', function(res) {
+        authStatus = res.status;
+        if (res.status === 'connected') {
+          self.getUserInfo();
+        }
+        promise.resolve();
+      });
+    },
+    getUserInfo: function() {
+      FB.api('/me', {fields: 'id,name'}, function(res) {
+        $rootScope.$apply(function() {
+          $rootScope.myself = res;
+        });
+      });
+    },
+    isAuthenticated: function() {
+      return authStatus === 'connected';
+    },
+    waitForFbApi: function() {
+      return promise;
+    }
+  };
+});
+

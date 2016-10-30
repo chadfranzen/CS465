@@ -11,5 +11,23 @@
         </md-button>
       </div>
     </md-toolbar>
+    <md-content>
+      <h3 ng-show="tour.guests.pending.length">Pending</h3>
+      <md-list ng-show="tour.guests.pending.length">
+        <md-list-item ng-repeat="guest in tour.gests.pending">
+          <profile-pic user="guest"></profile-pic>
+          <h4>{{guest.name}}</h4>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+      <h3>Confirmed</h3>
+      <md-list>
+        <md-list-item ng-repeat="guest in tour.guests.confirmed">
+          <profile-pic user="guest"></profile-pic>
+          <h4>{{guest.name}}</h4>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-content>
   </md-dialog-content>
 </md-dialog>
