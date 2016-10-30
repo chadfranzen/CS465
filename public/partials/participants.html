@@ -3,7 +3,7 @@
     <md-toolbar>
       <div class="md-toolbar-tools">
         <div class="participants-title">
-          <h3>People Going</h3>
+          <h3>{{tour.guests.confirmed.length}} {{tour.guests.confirmed.length === 1 ? 'Person' : 'People'}} Going</h3>
         </div>
         <span flex></span>
         <md-button class="close-dialog" ng-click="closeDialog()">
@@ -11,20 +11,29 @@
         </md-button>
       </div>
     </md-toolbar>
-    <md-content>
-      <h3 ng-show="tour.guests.pending.length">Pending</h3>
+    <md-content class="fullscreen-dialog-content">
+      <h3 ng-show="tour.guests.pending.length">Requests</h3>
       <md-list ng-show="tour.guests.pending.length">
-        <md-list-item ng-repeat="guest in tour.gests.pending">
+        <md-list-item ng-repeat="guest in tour.guests.pending">
           <profile-pic user="guest"></profile-pic>
           <h4>{{guest.name}}</h4>
+          <span flex></span>
+          <md-button class="md-raised md-warn reject">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </md-button>
+          <md-button class="md-raised md-primary accept">
+            <i class="fa fa-check" aria-hidden="true"></i>
+          </md-button>
           <md-divider></md-divider>
         </md-list-item>
       </md-list>
-      <h3>Confirmed</h3>
+      <h3>Going</h3>
       <md-list>
         <md-list-item ng-repeat="guest in tour.guests.confirmed">
           <profile-pic user="guest"></profile-pic>
           <h4>{{guest.name}}</h4>
+          <span flex></span>
+          <md-button class="md-warn">Kick</md-button>
           <md-divider></md-divider>
         </md-list-item>
       </md-list>

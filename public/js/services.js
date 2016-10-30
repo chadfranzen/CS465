@@ -95,14 +95,20 @@ services.factory('Tours', function() {
               },
               replies: [
                 {
-                  author: {},
+                  author: {
+                    id: 100006483844947,
+                    name: 'Violet Zhao',
+                  },
                   text: 'Same.'
                 }
               ]
             },
             {
               post: {
-                author: {},
+                author: {
+                  id: 100006483844947,
+                  name: 'Violet Zhao',
+                },
                 text: 'I like the Union.'
               },
               replies: []
@@ -119,7 +125,10 @@ services.factory('Tours', function() {
       time: new Date(1477933200000),
       guests: {
         pending: [
-
+          {
+            id: 1400259734,
+            name: 'Neha Agarwal'
+          }
         ],
         confirmed: [
           {

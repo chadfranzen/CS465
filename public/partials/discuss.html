@@ -10,11 +10,20 @@
 </md-toolbar>
 <md-content>
   <md-list class="thread" ng-repeat="thread in discussion">
-    <md-list-item class="post">
-      {{thread.post.text}}
+    <md-list-item class="post" layout="row">
+      <profile-pic user="thread.post.author"></profile-pic>
+      <div flex>
+        <div class="md-body-1">{{thread.post.text}}</div>
+        <div class="md-caption">by {{thread.post.author.name}}</div>
+      </div>
     </md-list-item>
-    <md-list-item class="reply" ng-repeat="reply in thread.replies">
-      {{reply.text}}
+    <md-divider></md-divider>
+    <md-list-item flex-offset="10" layout="row" class="post" ng-repeat="reply in thread.replies">
+      <profile-pic user="reply.author"></profile-pic>
+      <div flex>
+        <div class="md-body-1">{{reply.text}}</div>
+        <div class="md-caption">by {{reply.author.name}}</div>
+      </div>
     </md-list-item>
     <md-divider></md-divider>
   </md-list>
