@@ -2,7 +2,7 @@ app.controller('DiscoverController', function($scope) {
   console.log('DiscoverController running');
 });
 
-app.controller('SearchController', function($scope, $timeout, NgMap, Tours) {
+app.controller('SearchController', function($scope, $timeout, $location, NgMap, Tours) {
   console.log('SearchController running');
 
   var currTime = new Date(Date.now());
@@ -55,6 +55,7 @@ app.controller('SearchController', function($scope, $timeout, NgMap, Tours) {
 
   $scope.clickedMarker = function() {
     var tour = $scope.results[this.id];
+    $location.path('tour/' + tour._id);
   };
 });
 
@@ -66,7 +67,7 @@ app.controller('CreateController', function($scope) {
   console.log('CreateController running');
 });
 
-app.controller('TourController', function($scope, $routeParams, Tours) {
+app.controller('TourController', function($scope, $routeParams, $mdDialog, Tours) {
   $scope.getWaypoints = function(locations) {
     return locations.slice(1, locations.length-1).map(function(location) {
       return {location: location, stopover: true};
@@ -74,6 +75,21 @@ app.controller('TourController', function($scope, $routeParams, Tours) {
   };
   console.log('TourController running');
   $scope.tour = Tours.getById($routeParams.id);
+  $scope.openDialog = function($event) {
+    $mdDialog.show({
+      parent: angular.element(document.body),
+      templateUrl: 'partials/participants.html',
+      controller: 'ParticipantsController',
+      locals: {tour: $scope.tour}
+    });
+  };
+});
+
+app.controller('ParticipantsController', function($scope, $mdDialog, tour) {
+  console.log(tour);
+  $scope.closeDialog = function() {
+    $mdDialog.hide();
+  }
 });
 
 app.controller('DiscussController', function($scope, $routeParams, Tours) {

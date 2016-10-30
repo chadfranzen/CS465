@@ -49,7 +49,7 @@
     center="current-position"
     on-center-changed="centerChanged()"
     geo-fallback-center="[40.109387, -88.2272456]">
-    <marker ng-repeat="result in results" id="{{$index}}"
+    <marker ng-href="#/results" ng-repeat="result in results" id="{{$index}}"
       position="{{result.locations[0].lat}},{{result.locations[0].lng}}"
       on-click="clickedMarker()"></marker>
     <custom-marker ng-repeat="result in results"
