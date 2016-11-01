@@ -107,6 +107,10 @@ controllers.controller('TourController', function($scope, $routeParams, $mdDialo
       locals: {tour: $scope.tour}
     });
   };
+  $scope.goBack = function() {
+    //TODO: lol whoops this doesn't work right at all!
+    window.history.back();
+  };
 });
 
 controllers.controller('ParticipantsController', function($scope, $mdDialog, tour) {

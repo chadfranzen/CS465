@@ -122,7 +122,7 @@ services.factory('Tours', function() {
         }
       ],
       categories: ['recreation'],
-      time: new Date(1477933200000),
+      time: new Date(1480539600000),
       guests: {
         pending: [
           {

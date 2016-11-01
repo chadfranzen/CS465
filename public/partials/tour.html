@@ -1,6 +1,6 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <md-button class="back-icon">
+    <md-button ng-click="goBack()" class="back-icon">
       <i class="fa fa-arrow-left" aria-hidden="true"></i>
     </md-button>
     <div flex class="tour-title">
@@ -25,7 +25,7 @@
       destination="{{tour.locations[tour.locations.length-1]}}">
     </directions>
     <marker ng-if="tour.locations.length === 1"
-      position="{{tour.locations[0].lat}}, {{tour.locations[0].lng}}">
+      position="{{tour.locations[0].lat}}, {{tour.locations[0].lng}}"></marker>
   </ng-map>
   <h3 class="plans-header">Plans</h3>
   <md-list>

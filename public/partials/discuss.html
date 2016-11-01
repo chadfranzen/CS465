@@ -3,19 +3,23 @@
     <md-button class="back-icon" ng-href="#/tour/{{tourId}}">
       <i class="fa fa-arrow-left" aria-hidden="true"></i>
     </md-button>
-    <div class="discuss-title">
-      {{plan.text | characters:35}}
+    <div class="discuss-title" layout="row" layout-align="center center">
+      <span class="discuss-title-text">{{plan.text | characters:35}}</span>
     </div>
   </div>
 </md-toolbar>
-<md-content>
+<md-content layout="column">
   <md-list class="thread" ng-repeat="thread in discussion">
     <md-list-item class="post" layout="row">
       <profile-pic user="thread.post.author"></profile-pic>
-      <div flex>
+      <div>
         <div class="md-body-1">{{thread.post.text}}</div>
         <div class="md-caption">by {{thread.post.author.name}}</div>
       </div>
+      <span flex></span>
+      <md-button>
+        <i class="fa fa-reply" aria-hidden="true"></i>
+      </md-button>
     </md-list-item>
     <md-divider></md-divider>
     <md-list-item flex-offset="10" layout="row" class="post" ng-repeat="reply in thread.replies">
@@ -27,4 +31,16 @@
     </md-list-item>
     <md-divider></md-divider>
   </md-list>
+  <md-list>
+    <md-list-item ng-hide="makingPost">
+      <md-button flex ng-click="makingPost = true">+ New Post</md-button>
+    </md-list-item>
+  </md-list>
+  <md-form ng-show="makingPost" layout="column">
+    <md-input-container>
+      <label>New Post</label>
+      <textarea ng-model="newPost"></textarea>
+    </md-input-container>
+    <md-button class="md-raised md-primary">POST</md-button>
+  </md-form>
 </md-content>
