@@ -18,10 +18,10 @@
           <profile-pic user="guest"></profile-pic>
           <h4>{{guest.name}}</h4>
           <span flex></span>
-          <md-button class="md-raised md-warn reject">
+          <md-button class="md-raised md-warn reject" ng-click="rejectUser(guest)">
             <i class="fa fa-times" aria-hidden="true"></i>
           </md-button>
-          <md-button class="md-raised md-primary accept">
+          <md-button class="md-raised md-primary accept" ng-click="acceptUser(guest)">
             <i class="fa fa-check" aria-hidden="true"></i>
           </md-button>
           <md-divider></md-divider>
@@ -33,7 +33,7 @@
           <profile-pic user="guest"></profile-pic>
           <h4>{{guest.name}}</h4>
           <span flex></span>
-          <md-button class="md-warn">Kick</md-button>
+          <md-button class="md-warn" ng-click="kickUser(guest)">Kick</md-button>
           <md-divider></md-divider>
         </md-list-item>
       </md-list>

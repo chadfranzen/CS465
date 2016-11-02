@@ -5,7 +5,7 @@
     </md-button>
     <div flex class="tour-title">
       <div>{{tour.title}}</div>
-      <div>{{tour.time.toString()}}</div>
+      <div>{{tour.time | date:'short'}}</div>
     </div>
     <md-button ng-click="openDialog($event)" class="tour-icon">
       <i class="fa fa-users" aria-hidden="true"></i>
@@ -17,7 +17,7 @@
     {{tour.description}}
   </div>
   <md-button class="md-raised md-primary join-btn">Join</md-button>
-  <ng-map disable-default-u-i="true" center="[{{tour.locations[0].lat}}, {{tour.locations[0].lng}}]">
+  <ng-map style="height:250px" draggable="false" disable-default-u-i="true" center="[{{tour.locations[0].lat}}, {{tour.locations[0].lng}}]">
     <directions ng-if="tour.locations.length > 1"
       travel-mode="WALKING"
       origin="{{tour.locations[0]}}"

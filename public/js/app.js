@@ -1,7 +1,7 @@
 var app = angular.module('App', ['ngRoute', 'ngMap', 'ngMaterial', 'truncate', 'Services', 'Controllers']);
 
 app.config(function($mdThemingProvider, $routeProvider) {
-  $mdThemingProvider.theme('light');
+  $mdThemingProvider.theme('default');
   $mdThemingProvider.enableBrowserColor();
 
   $routeProvider

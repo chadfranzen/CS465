@@ -121,6 +121,19 @@ controllers.controller('ParticipantsController', function($scope, $mdDialog, tou
   $scope.closeDialog = function() {
     $mdDialog.hide();
   };
+
+  var guests = $scope.tour.guests;
+
+  $scope.rejectUser = function(user) {
+    guests.pending = _.without(guests.pending, user);
+  };
+  $scope.acceptUser = function(user) {
+    guests.pending = _.without(guests.pending, user);
+    guests.confirmed.push(user);
+  };
+  $scope.kickUser = function(user) {
+    guests.confirmed = _.without(guests.confirmed, user);
+  };
 });
 
 controllers.controller('DiscussController', function($scope, $rootScope, $routeParams, Tours) {
@@ -148,5 +161,5 @@ controllers.controller('DiscussController', function($scope, $rootScope, $routeP
       time: Date.now()
     };
     thread.replies.push(newReply);
-  }
+  };
 });
