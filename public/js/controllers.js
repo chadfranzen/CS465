@@ -138,4 +138,12 @@ controllers.controller('DiscussController', function($scope, $rootScope, $routeP
     };
     $scope.discussion.push(thread);
   };
+  $scope.submitReply = function(thread, newReplyText) {
+    var newReply = {
+      author: $rootScope.myself,
+      text: newReplyText,
+      time: Date.now()
+    };
+    thread.replies.push(newReply);
+  }
 });
