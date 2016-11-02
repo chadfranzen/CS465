@@ -9,7 +9,7 @@ services.directive('profilePic', function($compile) {
     restrict: 'E',
     link: function($scope, $element, $attrs) {
       var id = $attrs.user.id;
-      var DOM = angular.element('<img class="profile-pic" ng-src="//graph.facebook.com/' + $scope.user.id + '/picture?type=square&height=100&width=100">');
+      var DOM = angular.element('<img class="profile-pic md-user-avatar" ng-src="//graph.facebook.com/' + $scope.user.id + '/picture?type=square&height=100&width=100">');
       var $e = $compile(DOM)($scope);
       $element.replaceWith($e);
     }

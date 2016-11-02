@@ -8,39 +8,55 @@
     </div>
   </div>
 </md-toolbar>
-<md-content layout="column">
-  <md-list class="thread" ng-repeat="thread in discussion">
-    <md-list-item class="post" layout="row">
-      <profile-pic user="thread.post.author"></profile-pic>
-      <div>
-        <div class="md-body-1">{{thread.post.text}}</div>
-        <div class="md-caption">by {{thread.post.author.name}}</div>
-      </div>
-      <span flex></span>
-      <md-button>
-        <i class="fa fa-reply" aria-hidden="true"></i>
-      </md-button>
-    </md-list-item>
-    <md-divider></md-divider>
-    <md-list-item flex-offset="10" layout="row" class="post" ng-repeat="reply in thread.replies">
-      <profile-pic user="reply.author"></profile-pic>
-      <div flex>
-        <div class="md-body-1">{{reply.text}}</div>
-        <div class="md-caption">by {{reply.author.name}}</div>
-      </div>
-    </md-list-item>
-    <md-divider></md-divider>
-  </md-list>
+<md-content class="discussion" layout="column">
   <md-list>
-    <md-list-item ng-hide="makingPost">
-      <md-button flex ng-click="makingPost = true">+ New Post</md-button>
+    <md-list-item ng-repeat="thread in discussion">
+      <md-card class="thread">
+        <md-card-header class="post" layout="row">
+          <md-card-avatar>
+            <profile-pic user="thread.post.author"></profile-pic>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">{{thread.post.author.name}}</span>
+            <span class="md-subhead">{{thread.post.time | date:'short'}}</span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-content>
+          <p>{{thread.post.text}}</p>
+          <md-divider ng-show="thread.replies.length"></md-divider>
+          <md-list ng-show="thread.replies.length">
+            <md-list-item layout="row" ng-repeat="reply in thread.replies">
+              <md-card-avatar>
+                <profile-pic user="reply.author"></profile-pic>
+              </md-card-avatar>
+              <div flex>
+                <div class="md-body-1">{{reply.text}}</div>
+                <div class="md-caption">by {{reply.author.name}}</div>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>
+            <md-icon>reply</md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+    </md-list-item>
+    <md-list-item>
+      <md-card>
+        <md-card-content ng-show="makingPost" layout="column">
+          <md-input-container class="new-post">
+            <label>New Post</label>
+            <textarea ng-model="newPostText" md-maxlength="500"></textarea>
+          </md-input-container>
+          <md-button ng-click="submitPost()" class="md-raised md-primary">POST</md-button>
+        </md-card-content>
+        <md-card-actions ng-hide="makingPost">
+          <md-button flex ng-click="makingPost = true">+ New Post</md-button>
+        </md-card-actions>
+      </md-card>
     </md-list-item>
   </md-list>
-  <md-form ng-show="makingPost" layout="column">
-    <md-input-container>
-      <label>New Post</label>
-      <textarea ng-model="newPost"></textarea>
-    </md-input-container>
-    <md-button class="md-raised md-primary">POST</md-button>
-  </md-form>
 </md-content>

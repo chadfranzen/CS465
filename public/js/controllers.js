@@ -120,10 +120,22 @@ controllers.controller('ParticipantsController', function($scope, $mdDialog, tou
   };
 });
 
-controllers.controller('DiscussController', function($scope, $routeParams, Tours) {
+controllers.controller('DiscussController', function($scope, $rootScope, $routeParams, Tours) {
   console.log('DiscussController running');
   var tour = Tours.getById($routeParams.id);
   $scope.tourId = $routeParams.id;
   $scope.plan = tour.plans[$routeParams.planIdx];
   $scope.discussion = tour.plans[$routeParams.planIdx].discussion;
+  $scope.submitPost = function() {
+    console.log($rootScope.myself);
+    var thread = {
+      post: {
+        author: $rootScope.myself,
+        text: $scope.newPostText,
+        time: Date.now()
+      },
+      replies: []
+    };
+    $scope.discussion.push(thread);
+  };
 });
