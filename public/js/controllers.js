@@ -92,6 +92,7 @@ controllers.controller('MyToursController', function($scope) {
 controllers.controller('CreateController', function($scope) {
   console.log('CreateController running');
 });
+//hahahha
 
 controllers.controller('TourController', function($scope, $routeParams, $mdDialog, Tours) {
   $scope.getWaypoints = function(locations) {
