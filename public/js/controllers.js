@@ -9,6 +9,8 @@ controllers.controller('AuthController', function($scope, $location, Auth) {
     });
   });
 
+  //Change
+
   $scope.isLoggingIn = function() {
     return $location.path() === '/login';
   };
