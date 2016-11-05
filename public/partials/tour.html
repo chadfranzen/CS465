@@ -19,16 +19,18 @@
   <md-button ng-show="!userHasJoined() && !userHasPendingRequest()" class="md-raised md-primary join-btn" ng-click="sendJoinRequest()">Join</md-button>
   <md-button ng-disabled="true" ng-show="userHasPendingRequest()" class="md-primary join-btn border-btn">Request Sent</md-button>
   <md-button ng-show="userHasJoined()" class="md-primary join-btn border-btn" ng-click="leave()">Joined</md-button>
-  <ng-map style="height:250px" draggable="false" disable-default-u-i="true" center="[{{tour.locations[0].lat}}, {{tour.locations[0].lng}}]">
-    <directions ng-if="tour.locations.length > 1"
-      travel-mode="WALKING"
-      origin="{{tour.locations[0]}}"
-      waypoints="{{getWaypoints(tour.locations)}}"
-      destination="{{tour.locations[tour.locations.length-1]}}">
-    </directions>
-    <marker ng-if="tour.locations.length === 1"
-      position="{{tour.locations[0].lat}}, {{tour.locations[0].lng}}"></marker>
-  </ng-map>
+  <a ng-href={{getMapsUrl()}}>
+    <ng-map style="height:250px" draggable="false" disable-default-u-i="true" center="[{{tour.locations[0].lat}}, {{tour.locations[0].lng}}]">
+      <directions ng-if="tour.locations.length > 1"
+        travel-mode="WALKING"
+        origin="{{tour.locations[0]}}"
+        waypoints="{{getWaypoints(tour.locations)}}"
+        destination="{{tour.locations[tour.locations.length-1]}}">
+      </directions>
+      <marker ng-if="tour.locations.length === 1"
+        position="{{tour.locations[0].lat}}, {{tour.locations[0].lng}}"></marker>
+    </ng-map>
+  </a>
   <h3 class="plans-header">Plans</h3>
   <md-list>
     <md-list-item ng-href="#/tour/{{tour._id}}/discuss/{{$index}}" ng-repeat="plan in tour.plans">

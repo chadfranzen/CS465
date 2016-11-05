@@ -138,6 +138,16 @@ controllers.controller('TourController', function($scope, $rootScope, $routePara
   $scope.sendJoinRequest = function() {
     $scope.tour.guests.pending.push($rootScope.myself);
   };
+
+  $scope.getMapsUrl = function() {
+    var locations = $scope.tour.locations;
+    locations = locations.map(function(location) {
+      return location.lat + ',' + location.lng;
+    });
+
+    return 'https://www.google.com/maps?saddr=My+Location'
+      + '&daddr=' + locations.join('+to:');
+  };
 });
 
 controllers.controller('ParticipantsController', function($scope, $mdDialog, tour) {
