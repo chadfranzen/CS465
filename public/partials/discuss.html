@@ -1,7 +1,7 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
     <md-button class="back-icon" ng-href="#/tour/{{tourId}}">
-      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      <md-icon>arrow_back</md-icon>
     </md-button>
     <div class="discuss-title" layout="row" layout-align="center center">
       <span class="discuss-title-text">{{plan.text | characters:35}}</span>
@@ -38,8 +38,8 @@
           </md-list>
           <md-input-container ng-show="makingReply" layout="column">
             <label>New Reply</label>
-            <textarea ng-model="newReplyText"></textarea>
-            <md-button ng-click="(makingReply = false) || submitReply(thread, newReplyText) || (newReplyText = '')">POST</md-button>
+            <textarea md-maxlength="500" ng-model="newReplyText"></textarea>
+            <md-button ng-disabled="!newReplyText.length" ng-click="(makingReply = false) || submitReply(thread, newReplyText) || (newReplyText = '')">POST</md-button>
           </md-input-container>
         </md-card-content>
         <md-card-actions ng-hide="makingReply" layout="row" layout-align="end center">
@@ -56,10 +56,10 @@
             <label>New Post</label>
             <textarea ng-model="newPostText" md-maxlength="500"></textarea>
           </md-input-container>
-          <md-button ng-click="(makingPost = false) || submitPost() || (newPostText = '')" class="md-raised md-primary">POST</md-button>
+          <md-button ng-disabled="!newPostText.length" ng-click="(makingPost = false) || submitPost() || (newPostText = '')" class="md-raised md-primary">POST</md-button>
         </md-card-content>
         <md-card-actions ng-hide="makingPost">
-          <md-button flex ng-click="makingPost = true">+ New Post</md-button>
+          <md-button class="new-post-btn" flex ng-click="makingPost = true">+ New Post</md-button>
         </md-card-actions>
       </md-card>
     </md-list-item>

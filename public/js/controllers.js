@@ -94,7 +94,7 @@ controllers.controller('CreateController', function($scope) {
 });
 //hahahha
 
-controllers.controller('TourController', function($scope, $routeParams, $mdDialog, Tours) {
+controllers.controller('TourController', function($scope, $rootScope, $routeParams, $mdDialog, Tours) {
   $scope.getWaypoints = function(locations) {
     return locations.slice(1, locations.length-1).map(function(location) {
       return {location: location, stopover: true};
@@ -113,6 +113,30 @@ controllers.controller('TourController', function($scope, $routeParams, $mdDialo
   $scope.goBack = function() {
     //TODO: lol whoops this doesn't work right at all!
     window.history.back();
+  };
+
+  $scope.userHasJoined = function() {
+    return _.contains($scope.tour.guests.confirmed, $rootScope.myself);
+  };
+
+  $scope.userHasPendingRequest = function() {
+    return _.contains($scope.tour.guests.pending, $rootScope.myself);
+  };
+
+  $scope.leave = function() {
+    var guests = $scope.tour.guests;
+    var confirm = $mdDialog.confirm()
+          .title('Really leave this tour?')
+          .ok('Yes')
+          .cancel('No');
+
+    $mdDialog.show(confirm).then(function() {
+      guests.confirmed = _.without(guests.confirmed, $rootScope.myself);
+    });
+  };
+
+  $scope.sendJoinRequest = function() {
+    $scope.tour.guests.pending.push($rootScope.myself);
   };
 });
 

@@ -101,6 +101,9 @@ html, body {
 .join-btn {
   margin-bottom: 10px;
 }
+.border-btn {
+  border: 1px solid;
+}
 /* Credit: https://github.com/angular/material/issues/2148 */
 .fullscreen-dialog {
   height:100%;
@@ -121,9 +124,6 @@ html, body {
 }
 .accept {
   min-width: 70px;
-}
-.close-dialog {
-  font-size: 30px;
 }
 .participants-title {
   position: absolute;
@@ -160,5 +160,8 @@ md-list-item.post {
   z-index: 2;
 }
 .discussion md-card {
+  width: 100%;
+}
+.new-post-btn {
   width: 100%;
 }

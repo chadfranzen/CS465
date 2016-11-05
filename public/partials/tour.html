@@ -1,7 +1,7 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
     <md-button ng-click="goBack()" class="back-icon">
-      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      <md-icon>arrow_back</md-icon>
     </md-button>
     <div flex class="tour-title">
       <div>{{tour.title}}</div>
@@ -16,7 +16,9 @@
   <div class="tour-description">
     {{tour.description}}
   </div>
-  <md-button class="md-raised md-primary join-btn">Join</md-button>
+  <md-button ng-show="!userHasJoined() && !userHasPendingRequest()" class="md-raised md-primary join-btn" ng-click="sendJoinRequest()">Join</md-button>
+  <md-button ng-disabled="true" ng-show="userHasPendingRequest()" class="md-primary join-btn border-btn">Request Sent</md-button>
+  <md-button ng-show="userHasJoined()" class="md-primary join-btn border-btn" ng-click="leave()">Joined</md-button>
   <ng-map style="height:250px" draggable="false" disable-default-u-i="true" center="[{{tour.locations[0].lat}}, {{tour.locations[0].lng}}]">
     <directions ng-if="tour.locations.length > 1"
       travel-mode="WALKING"
