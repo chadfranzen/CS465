@@ -36,8 +36,8 @@ app.config(function($mdThemingProvider, $routeProvider) {
   $mdThemingProvider.definePalette('custom-pink', customPink);
 
   $mdThemingProvider.theme('default')
-    .primaryPalette('cyan')
-    .accentPalette('pink');
+    .primaryPalette('custom-purple')
+    .accentPalette('custom-orange');
   $mdThemingProvider.enableBrowserColor();
 
   $routeProvider

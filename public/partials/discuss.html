@@ -3,9 +3,12 @@
     <md-button class="back-icon" ng-href="#/tour/{{tourId}}">
       <md-icon>arrow_back</md-icon>
     </md-button>
-    <div class="discuss-title" layout="row" layout-align="center center">
+    <div flex layout="row" layout-align="center center">
       <span class="discuss-title-text">{{plan.text | characters:35}}</span>
     </div>
+    <md-button style="visibility:hidden;">
+      <md-icon>arrow_back</md-icon>
+    </md-button>
   </div>
 </md-toolbar>
 <md-content class="discussion" layout="column">
@@ -23,7 +26,6 @@
         </md-card-header>
         <md-card-content>
           <p>{{thread.post.text}}</p>
-          <md-divider ng-show="thread.replies.length"></md-divider>
           <md-list ng-show="thread.replies.length">
             <md-list-item layout="row" ng-repeat="reply in thread.replies">
               <md-card-avatar>
@@ -31,9 +33,8 @@
               </md-card-avatar>
               <div flex>
                 <div class="md-body-1">{{reply.text}}</div>
-                <div class="md-caption">by {{reply.author.name}}</div>
+                <div class="md-caption">by {{reply.author.name}} at {{reply.time | date:'short'}}</div>
               </div>
-              <md-divider></md-divider>
             </md-list-item>
           </md-list>
           <md-input-container ng-show="makingReply" layout="column">

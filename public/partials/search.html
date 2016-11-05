@@ -1,8 +1,7 @@
-<md-toolbar class="md-medium-tall" layout-align="center">
-  <div class="md-toolbar-tools" layout="column" layout-align="center center">
-    <md-input-container class="search-input">
-      <label>Keywords</label>
-      <input type="text" ng-model="searchParams.keywords">
+<md-toolbar class="no-max-height" layout-align="start center">
+  <div class="md-toolbar-tools no-max-height" layout="column" layout-align="start center">
+    <md-input-container class="search-input" md-no-float>
+      <input type="text" ng-model="searchParams.keywords" placeholder="Keywords">
     </md-input-container>
     <md-input-container class="search-input">
       <input places-auto-complete type="text" on-place-changed="placeChanged()">
@@ -12,7 +11,7 @@
 <div id="results" flex layout="column">
   <!-- Expandable part of toolbar -->
   <div class="expandable" layout="column">
-    <md-toolbar ng-show="showingAdvanced" layout-align="center">
+    <md-toolbar class="advanced-options" ng-show="showingAdvanced" layout-align="center">
       <div layout="row" layout-align="center">
         <md-input-container class="date">
           <label>From</label>
@@ -38,8 +37,11 @@
         </div>
       </div>
     </md-toolbar>
-    <md-toolbar class="expand-button" md-ink-ripple="true" layout-align="center center" layout ng-click="showingAdvanced = !showingAdvanced" >
-        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+    <md-toolbar layout-align="end center" layout="column" class="expanding-toolbar">
+      <md-button class="expand-button" ng-class="{expanded: showingAdvanced}" ng-click="showingAdvanced = !showingAdvanced" >
+        <!--<i class="fa fa-chevron-down" aria-hidden="true"></i>-->
+        <md-icon>arrow_drop_down_circle</md-icon>
+      </md-button>
     </md-toolbar>
   </div>
 

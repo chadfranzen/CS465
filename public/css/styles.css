@@ -28,9 +28,18 @@ html, body {
 /* Search */
 .search-input {
   margin: 0;
-  font-size: 12px;
-  width: 75%;
+  font-size: 16px;
+  width: 95%;
   max-width: 400px;
+  padding: 5px;
+  background-color: rgba(158, 158, 158, 0.2);
+  border-radius: 5px;
+  margin: 5px 0px;
+}
+.no-max-height {
+  max-height: 999999px;
+  height: inherit;
+  padding-top: 3px;
 }
 .search-input .md-errors-spacer {
   display: none;
@@ -54,13 +63,23 @@ html, body {
   width: 100%;
   z-index: 2;
 }
+.expanding-toolbar {
+  min-height: 0px;
+  height: inherit;
+}
+.advanced-options {
+  padding: 20px;
+}
 .search-list {
-  margin-top: 35px;
+  margin-top: 48px;
 }
 .expand-button {
   min-height: 0px;
-  padding-top: 5px;
-  padding-bottom: 10px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 0px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 .date {
   font-size: 14px;
@@ -80,6 +99,12 @@ html, body {
 .categories {
   padding: 0 5%;
 }
+.expand-button md-icon {
+  transition: all 0.6s ease;
+}
+.expanded md-icon {
+  transform: rotate(180deg);
+}
 
 /* Tour */
 .tour-title {
@@ -92,6 +117,8 @@ html, body {
   text-align: center;
 }
 .discuss-icon {
+  padding-right: 10px;
+  border-right: 1px solid rgba(0,0,0,0.12);
   margin-right: 10px;
 }
 .tour-description {
