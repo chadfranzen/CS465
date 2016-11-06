@@ -28,7 +28,7 @@ controllers.controller('DiscoverController', function($scope) {
   console.log('DiscoverController running');
 });
 
-controllers.controller('SearchController', function($scope, $timeout, $location, NgMap, Tours) {
+controllers.controller('SearchController', function($scope, $timeout, $location, $rootScope, NgMap, Tours, State) {
   console.log('SearchController running');
 
   var currTime = new Date(Date.now());
@@ -50,7 +50,15 @@ controllers.controller('SearchController', function($scope, $timeout, $location,
     endDate: nextMonth
   };
 
+  var savedState = State.get();
+  if (savedState) {
+    for (var key in savedState) {
+      $scope[key] = savedState[key];
+    }
+  }
+
   var search = _.debounce(function() {
+    console.log('searching');
     $scope.results = Tours.search($scope.searchParams);
   }, 50);
 
@@ -73,6 +81,7 @@ controllers.controller('SearchController', function($scope, $timeout, $location,
 
   $scope.centerChanged = function() {
     var center = this.getCenter();
+    console.log(center);
     $scope.searchParams.location = {
       lat: center.lat(),
       lng: center.lng()
@@ -83,6 +92,13 @@ controllers.controller('SearchController', function($scope, $timeout, $location,
     var tour = $scope.results[this.id];
     $location.path('tour/' + tour._id);
   };
+
+  $rootScope.$on('$routeChangeStart', function() {
+    State.save({
+      searchParams: $scope.searchParams,
+      locationName: $scope.locationName
+    });
+  });
 });
 
 controllers.controller('MyToursController', function($scope) {
@@ -92,7 +108,6 @@ controllers.controller('MyToursController', function($scope) {
 controllers.controller('CreateController', function($scope) {
   console.log('CreateController running');
 });
-//hahahha
 
 controllers.controller('TourController', function($scope, $rootScope, $routeParams, $mdDialog, Tours) {
   $scope.getWaypoints = function(locations) {
@@ -176,8 +191,8 @@ controllers.controller('DiscussController', function($scope, $rootScope, $routeP
   $scope.tourId = $routeParams.id;
   $scope.plan = tour.plans[$routeParams.planIdx];
   $scope.discussion = tour.plans[$routeParams.planIdx].discussion;
+
   $scope.submitPost = function() {
-    console.log($rootScope.myself);
     var thread = {
       post: {
         author: $rootScope.myself,
@@ -188,6 +203,7 @@ controllers.controller('DiscussController', function($scope, $rootScope, $routeP
     };
     $scope.discussion.push(thread);
   };
+
   $scope.submitReply = function(thread, newReplyText) {
     var newReply = {
       author: $rootScope.myself,
@@ -196,4 +212,6 @@ controllers.controller('DiscussController', function($scope, $rootScope, $routeP
     };
     thread.replies.push(newReply);
   };
+
+  $scope.goBack = function() { window.history.back(); };
 });

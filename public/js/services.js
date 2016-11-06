@@ -16,6 +16,21 @@ services.directive('profilePic', function($compile) {
   };
 });
 
+// I need a way to store the state of the search controller so
+// we can load it again when you go back to the search page.
+services.factory('State', function() {
+  var savedState;
+
+  return {
+    save: function(state) {
+      savedState = state;
+    },
+    get: function() {
+      return savedState;
+    }
+  };
+});
+
 services.factory('Tours', function() {
   // Returns distance between two locations in miles
   // Credit: http://www.geodatasource.com/developers/javascript
@@ -35,7 +50,6 @@ services.factory('Tours', function() {
     dist = Math.acos(dist);
     dist = dist * 180/Math.PI;
     dist = dist * 60 * 1.1515;
-    console.log(dist);
     return dist;
   };
 

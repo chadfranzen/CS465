@@ -4,7 +4,7 @@
       <input type="text" ng-model="searchParams.keywords" placeholder="Keywords">
     </md-input-container>
     <md-input-container class="search-input">
-      <input places-auto-complete type="text" on-place-changed="placeChanged()">
+      <input ng-model="locationName" places-auto-complete type="text" on-place-changed="placeChanged()">
     </md-input-container>
   </div>
 </md-toolbar>
@@ -48,7 +48,7 @@
   <!-- Map View -->
   <ng-map ng-hide="listView" id="searchmap"
     disable-default-u-i="true" default-style="false"
-    center="current-position"
+    center="{{searchParams.location ? [searchParams.location.lat, searchParams.location.lng] : 'current-position'}}"
     on-center-changed="centerChanged()"
     geo-fallback-center="[40.109387, -88.2272456]">
     <marker ng-href="#/results" ng-repeat="result in results" id="{{$index}}"
