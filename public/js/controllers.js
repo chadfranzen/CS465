@@ -126,7 +126,6 @@ controllers.controller('TourController', function($scope, $rootScope, $routePara
     });
   };
   $scope.goBack = function() {
-    //TODO: lol whoops this doesn't work right at all!
     window.history.back();
   };
 

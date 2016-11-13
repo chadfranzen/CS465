@@ -20,5 +20,8 @@
     "angular-route": "^1.5.8",
     "ngmap": "^1.17.8",
     "angular-truncate": "*"
+  },
+  "resolutions": {
+    "angular": "1.5.8"
   }
 }
