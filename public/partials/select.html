@@ -1,0 +1,10 @@
+
+<div ng-controller="SelectController">
+	<h1> Select Images you like! </h1>
+
+	<div md-virtual-repeat-container md-orient-horizontal>
+	  <div md-virtual-repeat="i in categories" md-item-size="20">
+	  	<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img ng-src="./data/categories/{{i}}.jpg" class="image_list"></a>
+	  </div>
+	</div md-virtual-repeat-container>
+</div>
