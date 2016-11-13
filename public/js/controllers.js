@@ -227,9 +227,11 @@ controllers.controller('CreateController', function($scope) {
   
     $scope.tour = {
       title: '',
-      location: ''
+      location: '',
+      categories: []
     };
 
+    console.log($scope.tour.location);
   
 
 
