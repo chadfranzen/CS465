@@ -205,3 +205,12 @@ md-list-item.post {
 .new-post-btn {
   width: 100%;
 }
+
+#mytours .tour {
+  height: 130px;
+  border-bottom: 1px solid rgba(0,0,0,0.12);;
+}
+
+.tour .date {
+  border-right: 1px solid rgba(0,0,0,0.12);
+}
