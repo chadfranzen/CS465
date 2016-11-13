@@ -12,15 +12,22 @@
     <div>
       <form name="eventForm">
 
-        <div layout-gt-xs="row">
-          <md-input-container class="md-block" flex-gt-xs="">
+        <div layout="row">
+          <md-input-container class="md-block" flex="">
             <label>Title</label>
             <input ng-model="tour.title" >
           </md-input-container>
+        </div>
 
-          <md-input-container flex-gt-xs="">
+        <div layout="row">
+          <md-input-container flex="">
             <label>Start Date</label>
-            <md-datepicker ng-model="tour.startDate"></md-datepicker>
+              <md-datepicker ng-model="tour.date"></md-datepicker>
+          </md-input-container>
+
+          <md-input-container flex="">
+            <label>Start Time</label>
+            <input type="time" ng-model="tour.time" >
           </md-input-container>
         </div>
 
@@ -30,13 +37,18 @@
           <input ng-model="tour.location" places-auto-complete on-place-changed="placeChanged()" placeholder="Enter a Location">
         </md-input-container>
 
-
-        </div>
-
         <md-input-container class="md-block">
           <label>Description</label>
           <textarea ng-model="tour.description" md-maxlength="150" rows="5" md-select-on-focus=""></textarea>
         </md-input-container>
+        
+        <md-input-container class="md-block">
+          <label>Categories</label>
+          <md-chips ng-model="tour.categories" md-removable="removable" >
+          </md-chips>
+        </md-input-container>
+
+
 
 
       </form>
