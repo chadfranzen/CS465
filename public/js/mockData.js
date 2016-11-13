@@ -104,4 +104,5 @@ angular.module('Data', [])
         }
       },
     ];
+
   });

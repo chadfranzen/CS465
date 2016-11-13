@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <div ng-controller="CreateController" layout="column" ng-cloak="" >
   <md-toolbar layout-align="center">
   	<div class="md-toolbar-tools" layout layout-align="center center">
@@ -15,53 +15,27 @@
         <div layout-gt-xs="row">
           <md-input-container class="md-block" flex-gt-xs="">
             <label>Title</label>
-            <input ng-model="event.title" >
+            <input ng-model="tour.title" >
           </md-input-container>
 
           <md-input-container flex-gt-xs="">
             <label>Start Date</label>
-            <md-datepicker ng-model="event.startDate"></md-datepicker>
+            <md-datepicker ng-model="tour.startDate"></md-datepicker>
           </md-input-container>
         </div>
 
 
         <md-input-container class="md-block">
           <label>Location</label>
-          <input ng-model="event.location">
+          <input ng-model="tour.location" places-auto-complete on-place-changed="placeChanged()" placeholder="Enter a Location">
         </md-input-container>
 
 
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm="">
-            <label>City</label>
-            <input ng-model="event.city">
-          </md-input-container>
-
-          <md-input-container class="md-block" flex-gt-sm="">
-            <label>State</label>
-            <md-select ng-model="event.state">
-              <md-option ng-repeat="state in states" value="{{state.abbrev}}">
-                {{state.abbrev}}
-              </md-option>
-            </md-select>
-          </md-input-container>
-
-          <md-input-container class="md-block" flex-gt-sm="">
-            <label>Postal Code</label>
-            <input name="postalCode" ng-model="user.postalCode" placeholder="12345" required="" ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
-
-            <div ng-messages="userForm.postalCode.$error" role="alert" multiple="">
-              <div ng-message="required" class="my-message">You must supply a postal code.</div>
-              <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
-                code.
-              </div>
-            </div>
-          </md-input-container>
         </div>
 
         <md-input-container class="md-block">
           <label>Description</label>
-          <textarea ng-model="event.description" md-maxlength="150" rows="5" md-select-on-focus=""></textarea>
+          <textarea ng-model="tour.description" md-maxlength="150" rows="5" md-select-on-focus=""></textarea>
         </md-input-container>
 
 
@@ -71,6 +45,3 @@
 
 </div>
 
-=======
-<h1> Create </h1>
->>>>>>> d669f558ce61dba0a4c1b5376ae750f1c6e84552
