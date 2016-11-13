@@ -86,6 +86,11 @@ services.factory('Tours', function(MockData) {
                isInDateRange && isCloseEnough;
       });
       return results;
+    },
+
+    //TODO: Only return tours I am a part of.
+    getMyTours: function() {
+      return mockTours;
     }
   };
 });

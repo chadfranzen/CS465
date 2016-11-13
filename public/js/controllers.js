@@ -101,8 +101,14 @@ controllers.controller('SearchController', function($scope, $timeout, $location,
   });
 });
 
-controllers.controller('MyToursController', function($scope) {
-  console.log('MyToursController running');
+controllers.controller('MyToursController', function($scope, Tours) {
+  $scope.tours = Tours.getMyTours();
+  $scope.isToday = function(date) {
+    var today = new Date();
+    return date.getDate() === today.getDate() &&
+           date.getMonth() === today.getMonth() &&
+           date.getFullYear() === today.getFullYear();
+  };
 });
 
 controllers.controller('CreateController', function($scope) {
