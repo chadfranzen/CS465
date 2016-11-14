@@ -21,8 +21,8 @@
 
         <div layout="row">
           <md-input-container flex="">
-            <label>Start Date</label>
-              <md-datepicker ng-model="tour.date"></md-datepicker>
+              <label>Start Date</label>
+              <md-datepicker ng-model="tour.startdate"></md-datepicker>
           </md-input-container>
 
           <md-input-container flex="">
@@ -42,10 +42,24 @@
           <textarea ng-model="tour.description" md-maxlength="150" rows="5" md-select-on-focus=""></textarea>
         </md-input-container>
         
-        <md-input-container class="md-block">
-          <label>Categories</label>
-          <md-chips ng-model="tour.categories" md-removable="removable" >
-          </md-chips>
+
+        <md-input-container >
+          <label layout = "row">Categories</label>
+          <br><br>
+          <div layout="row">
+            <div flex="50" layout="column" class="categories">
+              <md-checkbox ng-model="tour.categories.museums">Museums</md-checkbox>
+              <md-checkbox ng-model="tour.categories.architecture">Architecture</md-checkbox>
+              <md-checkbox ng-model="tour.categories.nature">Nature</md-checkbox>
+              <md-checkbox ng-model="tour.categories.food">Food</md-checkbox>
+            </div>
+            <div flex="50" layout="column" class="categories">
+              <md-checkbox ng-model="tour.categories.recreation">Recreation</md-checkbox>
+              <md-checkbox ng-model="tour.categories.fitness">Fitness</md-checkbox>
+              <md-checkbox ng-model="tour.categories.historical">Historical</md-checkbox>
+              <md-checkbox ng-model="tour.categories.nightlife">Nightlife</md-checkbox>
+            </div>
+          </div>
         </md-input-container>
 
 
