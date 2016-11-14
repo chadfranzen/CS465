@@ -1,22 +1,12 @@
 var controllers = angular.module('Controllers', ['ngMaterial', 'ngRoute', 'ngMap', 'Services']);
 
 controllers.controller('AuthController', function($scope, $location, Auth) {
-  $scope.$on('$routeChangeStart', function(event, newUrl) {
-    Auth.waitForFbApi().then(function() {
-      if (newUrl.needsLogin && !Auth.isAuthenticated()) {
-        $location.path('/login');
-      }
-    });
-  });
-
-  //Change
-
   $scope.isLoggingIn = function() {
     return $location.path() === '/login';
   };
 });
 
-controllers.controller('LoginController', function($rootScope, $location) {
+controllers.controller('LoginController', function($scope, $rootScope, $location, $window) {
   $rootScope.$watch('myself', function(myself) {
     if (myself) {
       $location.path('discover');

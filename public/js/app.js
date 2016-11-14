@@ -77,6 +77,7 @@ app.run(function($rootScope, $window, Auth) {
   $rootScope.user = {};
 
   $window.fbAsyncInit = function() {
+    console.log('Got async init');
     FB.init({
       appId: '364342647234556',
       channelUrl: 'partials/channel.html',
@@ -85,7 +86,7 @@ app.run(function($rootScope, $window, Auth) {
       xfbml: true
     });
 
-    Auth.watchAuthStatusChange();
+    Auth.waitForLoginStatus();
   };
 
   (function(d){
