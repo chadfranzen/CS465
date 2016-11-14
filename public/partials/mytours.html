@@ -1,33 +1,30 @@
-<div layout="column" layout-fill>
-
-  <!-- "My Tours" on top -->
-  <md-toolbar>
-
-    <div class="md-toolbar-tools">
-        <span flex></span>
-      <span>My Tours</span>
-        <span flex></span>
-    </div>
-
-  </md-toolbar>
-
-
-  <md-content id="mytours" layout="column">
-    <md-list>
-    <md-list-item href="#/tour/3" class="tour">
+<!-- "My Tours" on top -->
+<md-toolbar md-whiteframe="3">
+  <div class="md-toolbar-tools">
+    <span flex></span>
+    <span>My Tours</span>
+    <span flex></span>
+  </div>
+</md-toolbar>
+<md-content flex id="mytours" layout="column">
+  <md-list>
+    <md-list-item ng-href="#/tour/{{tour._id}}" class="tour" ng-repeat="tour in tours">
       <div class="tour-inner" layout="row">
         <div class="tour-date" flex="33" layout="column" layout-align="center center">
-          <div class="md-headline" md-colors="{color:'primary'}"><b>Today</b></div>
-          <div class="md-headline" md-colors="{color:'primary'}">9 am</div>
+          <div class="md-headline" md-colors="{color:'primary'}">
+            <b ng-show="isToday(tour.time)">Today</b>
+            <b ng-hide="isToday(tour.time)">{{tour.time | date:'MM/dd'}}</b>
+          </div>
+          <div class="md-headline" md-colors="{color:'primary'}">{{tour.time | date:'h:mma'}}</div>
         </div>
-      <div class="content" flex="66" layout="column">
-        <h3 class="md-title tour-name">Jogging</h3>
-        <div class="tour-location"> Central Park
+        <div class="content" flex="66" layout="column">
+          <h3 class="md-title tour-name">{{tour.title}}</h3>
+          <div class="tour-location">
+            {{tour.where}}
+          </div>
+          <div layout="row" layout-align="end end" flex>{{tour.guests.confirmed.length}} {{tour.guests.confirmed.length === 1 ? 'person is' : 'people are'}} going</div>
         </div>
-        <div layout="row" layout-align="end end" flex>15 people are going</div>
       </div>
-    </div>
     </md-list-item>
-
-
-</div>
+  </md-list>
+</md-content>

@@ -118,6 +118,9 @@ md-input-container.date label {
 .search-input input {
   color: rgba(255,255,255,0.87);
 }
+.on-top {
+  z-index: 999;
+}
 
 /* Tour */
 .tour-title {
@@ -241,7 +244,3 @@ md-list-item.post {
 .tour .tour-location{
   text-align: center;
 }
-
-
-
-

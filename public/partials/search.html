@@ -1,4 +1,4 @@
-<md-toolbar class="no-max-height" layout-align="start center">
+<md-toolbar class="no-max-height on-top" layout-align="start center">
   <div class="md-toolbar-tools no-max-height" layout="column" layout-align="start center">
     <md-input-container class="search-input" md-no-float>
       <input type="text" ng-model="searchParams.keywords" placeholder="Keywords">
@@ -10,7 +10,7 @@
 </md-toolbar>
 <div id="results" flex layout="column">
   <!-- Expandable part of toolbar -->
-  <div class="expandable" layout="column">
+  <div class="expandable" layout="column" md-whiteframe="3">
     <md-toolbar class="advanced-options" ng-show="showingAdvanced" layout-align="center">
       <div layout="row" layout-align="center">
         <md-input-container class="date">

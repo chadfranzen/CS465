@@ -1,22 +1,12 @@
 var controllers = angular.module('Controllers', ['ngMaterial', 'ngRoute', 'ngMap', 'Services']);
 
 controllers.controller('AuthController', function($scope, $location, Auth) {
-  $scope.$on('$routeChangeStart', function(event, newUrl) {
-    Auth.waitForFbApi().then(function() {
-      if (newUrl.needsLogin && !Auth.isAuthenticated()) {
-        $location.path('/login');
-      }
-    });
-  });
-
-  //Change
-
   $scope.isLoggingIn = function() {
     return $location.path() === '/login';
   };
 });
 
-controllers.controller('LoginController', function($rootScope, $location) {
+controllers.controller('LoginController', function($scope, $rootScope, $location, $window) {
   $rootScope.$watch('myself', function(myself) {
     if (myself) {
       $location.path('discover');
@@ -101,8 +91,14 @@ controllers.controller('SearchController', function($scope, $timeout, $location,
   });
 });
 
-controllers.controller('MyToursController', function($scope) {
-  console.log('MyToursController running');
+controllers.controller('MyToursController', function($scope, Tours) {
+  $scope.tours = Tours.getMyTours();
+  $scope.isToday = function(date) {
+    var today = new Date();
+    return date.getDate() === today.getDate() &&
+           date.getMonth() === today.getMonth() &&
+           date.getFullYear() === today.getFullYear();
+  };
 });
 
 controllers.controller('CreateController', function($scope) {

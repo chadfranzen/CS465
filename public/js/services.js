@@ -1,5 +1,15 @@
 var services = angular.module('Services', ['Data']);
 
+// Facebook login button doesn't play nice with Angular DOM manipulation...
+// Until now.
+services.directive("fbLogin", function($window, $rootScope) {
+    return function (scope, iElement, iAttrs) {
+        if ($window.FB) {
+            FB.XFBML.parse(iElement[0]);
+        }
+    };
+});
+
 services.directive('profilePic', function($compile) {
   return {
     replace: true,
@@ -86,26 +96,43 @@ services.factory('Tours', function(MockData) {
                isInDateRange && isCloseEnough;
       });
       return results;
+    },
+
+    //TODO: Only return tours I am a part of.
+    getMyTours: function() {
+      return mockTours;
     }
   };
 });
 
-services.factory('Auth', function($rootScope) {
+services.factory('Auth', function($rootScope, $route, $location) {
   var authStatus;
-  var promise = $.Deferred();
   return {
-    watchAuthStatusChange: function() {
+    waitForLoginStatus: function() {
       var self = this;
-      FB.Event.subscribe('auth.authResponseChange', function(res) {
+      FB.getLoginStatus(function(res) {
         authStatus = res.status;
         if (res.status === 'connected') {
           self.getUserInfo();
+        } else if ($route.current.needsLogin) {
+          $rootScope.$apply(function() {
+            $location.path('login');
+          });
         }
-        promise.resolve();
+        $rootScope.$on('$routeChangeStart', function(event, newUrl) {
+          if (newUrl.needsLogin && !self.isAuthenticated()) {
+            $location.path('/login');
+          }
+        });
+        FB.Event.subscribe('auth.login', function(response) {
+          authStatus = 'connected';
+          self.getUserInfo();
+        });
       });
     },
     getUserInfo: function() {
       FB.api('/me', {fields: 'id,name'}, function(res) {
+        console.log('Got user info');
         $rootScope.$apply(function() {
           $rootScope.myself = res;
         });
@@ -113,9 +140,6 @@ services.factory('Auth', function($rootScope) {
     },
     isAuthenticated: function() {
       return authStatus === 'connected';
-    },
-    waitForFbApi: function() {
-      return promise;
     }
   };
 });
