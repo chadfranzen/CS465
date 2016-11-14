@@ -229,21 +229,12 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
       
     };
     $scope.tour.creator = $rootScope.myself;
-    
-
-
-    $scope.setId = function (){
       
-      $scope.tour._id = MockData.length;
-
-    }
-    
-
-
+    $scope.tour._id = MockData.length;
 
     $scope.onSubmit = function (){
       
-      $scope.setId();
+
       MockData.push($scope.tour);
       console.log(MockData);
 
