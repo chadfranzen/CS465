@@ -1,4 +1,4 @@
-var app = angular.module('App', ['ngRoute', 'ngMap', 'ngMaterial', 'truncate', 'Services', 'Controllers']);
+var app = angular.module('App', ['ngRoute', 'ngMap', 'ngMaterial', 'truncate',  'ngMaterialDatePicker',  'Services', 'Controllers']);
 
 app.config(function($mdThemingProvider, $routeProvider) {
   var customPurple = $mdThemingProvider.extendPalette('deep-purple', {

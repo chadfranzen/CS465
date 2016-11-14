@@ -223,18 +223,38 @@ controllers.controller('SelectController', function($scope) {
 
 });
 
-controllers.controller('CreateController', function($scope) {
+controllers.controller('CreateController', function($scope, $rootScope, MockData) {
   
     $scope.tour = {
       title: '',
       location: '',
-      categories: []
+      categories: {}, 
+      plan: [],
+      
     };
+    $scope.tour.creator = $rootScope.myself;
+    
 
-    console.log($scope.tour.location);
-  
+
+    $scope.setId = function (){
+      
+      $scope.tour._id = MockData.length;
+
+    }
+    
 
 
+
+    $scope.onSubmit = function (){
+      
+      $scope.setId();
+      MockData.push($scope.tour);
+      console.log(MockData);
+
+    }
+    
+
+    
 });
 
 
