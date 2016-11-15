@@ -264,8 +264,16 @@ body, html {
 
 .full { 
   height: 100%;
-  /*background-image: url("../data/background.jpg");*/
-  /*background-color: #BDAEC6;*/
+  background-image: url("../data/background.jpg");
+  background-color: #BDAEC6;
+  background-size: cover;
+}
+.beneath {
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+.on-top {
+  color: rgb(240,240,240);
 }
 
 
