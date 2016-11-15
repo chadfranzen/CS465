@@ -7,6 +7,9 @@ controllers.controller('AuthController', function($scope, $location, Auth) {
 });
 
 controllers.controller('LoginController', function($scope, $rootScope, $location, $window) {
+  $scope.fb_login = function() {
+    FB.login( function() {}, { scope: 'email,public_profile' } );
+  };
   $rootScope.$watch('myself', function(myself) {
     if (myself) {
       $location.path('discover');
