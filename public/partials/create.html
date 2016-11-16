@@ -30,7 +30,7 @@
         
         <md-input-container class="md-block">
           <label>Location</label>
-          <input ng-model="tour.location" places-auto-complete on-place-changed="placeChanged()" placeholder="Enter a Location">
+          <input ng-model="location" places-auto-complete on-place-changed="placeChanged()" placeholder="Enter a Location">
         </md-input-container>
 
         <md-input-container class="md-block">
@@ -40,7 +40,7 @@
         
         <md-input-container class="md-block">
           <label>Plans</label>
-          <md-chips ng-model="tour.plan" placeholder = "Enter a plan" secondary-placeholder="+ Plan" md-enable-chip-edit="true">
+          <md-chips ng-model="plan_titles" placeholder = "Enter a plan" secondary-placeholder="+ Plan" md-enable-chip-edit="true">
           </md-chips>
         </md-input-container>
 

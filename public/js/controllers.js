@@ -68,6 +68,7 @@ controllers.controller('SearchController', function($scope, $timeout, $location,
 
   $scope.placeChanged = function() {
     var location = this.getPlace().geometry.location;
+    console.log(location);
     $scope.searchParams.location = location;
     map.setCenter(location);
   };
@@ -221,24 +222,42 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
     $scope.tour = {
       title: '',
       categories: [], 
-      plan: [],
+      plans: [],
+      locations : [],
+      guests: {pending:[], confirmed:[]}
       
     };
     $scope.tour.creator = $rootScope.myself;
     $scope.category_select = {};  
     $scope.tour._id = MockData.length;
     $scope.location = '';
+    $scope.plan_titles = [];
+    $scope.tour.guests.confirmed.push($rootScope.myself);
+
 
     $scope.placeChanged = function() {
         var locations = this.getPlace().geometry.location;
-
-        $scope.tour.locations = location;
-
+        obj = {};
+        obj["lat"] = locations.lat();
+        obj["lng"] = locations.lng();     
       };
 
     $scope.onSubmit = function (){
-    
 
+      for (j =0; j< $scope.plan_titles.length; j++)
+      {
+        var p = {}
+        p["text"] = $scope.plan_titles[j];
+        p["time"] = null;
+        p["discussion"] = [];
+
+        $scope.tour.plans.push(p);
+      }
+      
+
+
+
+      $scope.tour.locations.push(obj);
       for ( var i in $scope.category_select)
       {
           if ($scope.category_select[i])
@@ -248,12 +267,9 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
       }
 
 
-
       MockData.push($scope.tour);
       console.log(MockData);
-      console.log($scope.tour.locations);
-      console.log(MockData[3].locations)
-
+      console.log($scope.plans);
 
     };
     
