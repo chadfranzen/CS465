@@ -237,22 +237,35 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
       guests: {pending:[], confirmed:[]}
       
     };
+    obj = [];
 
 
     $scope.tour.creator = $rootScope.myself;
     $scope.category_select = {};  
     $scope.tour._id = MockData.length;
     $scope.location = '';
+    $scope.last_loc = [];
     $scope.plan_titles = [];
     $scope.tour.guests.confirmed.push($rootScope.myself);
 
 
     $scope.placeChanged = function() {
         var locations = this.getPlace().geometry.location;
-        obj = {};
-        obj["lat"] = locations.lat();
-        obj["lng"] = locations.lng();     
+        
+        var temp = {};
+        temp["lat"] = locations.lat();
+        temp["lng"] = locations.lng();  
+        if (temp["lat"] !== undefined && temp["lng"] !== undefined)
+        {
+          obj.push(temp);
+        }   
       };
+
+    $scope.locAdd = function ()
+    {
+        $scope.last_loc.push($scope.location);
+        $scope.location = '';
+    }
 
     $scope.onSubmit = function (){
 
@@ -269,7 +282,7 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
 
 
 
-      $scope.tour.locations.push(obj);
+      $scope.tour.locations = obj;
       for ( var i in $scope.category_select)
       {
           if ($scope.category_select[i])
