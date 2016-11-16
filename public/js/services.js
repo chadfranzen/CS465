@@ -41,7 +41,7 @@ services.factory('State', function() {
   };
 });
 
-services.factory('Tours', function(MockData) {
+services.factory('Tours', function($rootScope, MockData) {
   // Returns distance between two locations in miles
   // Credit: http://www.geodatasource.com/developers/javascript
   var distance = function(location1, location2) {
@@ -98,9 +98,28 @@ services.factory('Tours', function(MockData) {
       return results;
     },
 
-    //TODO: Only return tours I am a part of.
     getMyTours: function() {
-      return mockTours;
+      return _.filter(mockTours, function(tour) {
+        if (!$rootScope.myself || !tour.creator || !tour.guests) {
+          return false;
+        }
+        if (tour.creator.id == $rootScope.myself.id) {
+          return true;
+        }
+        var isAGuest = false;
+        isAGuest = isAGuest || _.find(tour.guests.pending, function(pendingGuest) {
+          return pendingGuest.id == $rootScope.myself.id;
+        });
+        isAGuest = isAGuest || _.find(tour.guests.confirmed, function(confirmedGuest) {
+          return confirmedGuest.id == $rootScope.myself.id;
+        });
+        return isAGuest;
+      });
+    },
+
+    remove: function(id) {
+      mockTours = _.reject(mockTours, function(tour) { return tour._id == id; });
+      console.log(mockTours);
     }
   };
 });

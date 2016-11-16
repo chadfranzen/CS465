@@ -16,9 +16,10 @@
   <div class="tour-description">
     {{tour.description}}
   </div>
-  <md-button ng-show="!userHasJoined() && !userHasPendingRequest()" class="md-raised md-primary join-btn" ng-click="sendJoinRequest()">Join</md-button>
+  <md-button ng-show="!userHasJoined() && !userHasPendingRequest() && !userIsCreator()" class="md-raised md-primary join-btn" ng-click="sendJoinRequest()">Join</md-button>
   <md-button ng-disabled="true" ng-show="userHasPendingRequest()" class="md-primary join-btn border-btn">Request Sent</md-button>
-  <md-button ng-show="userHasJoined()" class="md-primary join-btn border-btn" ng-click="leave()">Joined</md-button>
+  <md-button ng-show="userHasJoined() && !userIsCreator()" class="md-primary join-btn border-btn" ng-click="leave()">Joined</md-button>
+  <md-button ng-show="userIsCreator()" class="md-primary join-btn border-btn" ng-click="leave()">You are the creator</md-button>
   <a ng-href={{getMapsUrl()}}>
     <ng-map style="height:250px" draggable="false" disable-default-u-i="true" center="[{{tour.locations[0].lat}}, {{tour.locations[0].lng}}]">
       <directions ng-if="tour.locations.length > 1"

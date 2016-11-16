@@ -43,7 +43,7 @@
   <div flex layout="column" ng-view></div>
 
   <!-- Bottom Tabs -->
-  <md-nav-bar ng-hide="isLoggingIn() || isSelecting()" layout-align="center" md-selected-nav-item="'discover'">
+  <md-nav-bar ng-hide="isLoggingIn() || isSelecting()" layout-align="center" md-selected-nav-item="currentNavItem">
     <md-nav-item flex layout-align="center" md-nav-href="#/search" name="search">
       <i class="fa fa-search" aria-hidden="true"></i><br/>Search
     </md-nav-item>

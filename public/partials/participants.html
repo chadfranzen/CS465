@@ -12,8 +12,8 @@
       </div>
     </md-toolbar>
     <md-content class="fullscreen-dialog-content">
-      <h3 ng-show="tour.guests.pending.length">Requests</h3>
-      <md-list ng-show="tour.guests.pending.length">
+      <h3 ng-show="tour.guests.pending.length && userIsCreator()">Requests</h3>
+      <md-list ng-show="tour.guests.pending.length && userIsCreator()">
         <md-list-item ng-repeat="guest in tour.guests.pending">
           <profile-pic user="guest"></profile-pic>
           <h4>{{guest.name}}</h4>
@@ -33,7 +33,7 @@
           <profile-pic user="guest"></profile-pic>
           <h4>{{guest.name}}</h4>
           <span flex></span>
-          <md-button class="md-accent md-hue-2" ng-click="kickUser(guest)">Kick</md-button>
+          <md-button class="md-accent md-hue-2" ng-show="userIsCreator()" ng-click="kickUser(guest)">Kick</md-button>
           <md-divider></md-divider>
         </md-list-item>
       </md-list>

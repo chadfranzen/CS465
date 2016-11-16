@@ -10,25 +10,21 @@ angular.module('Data', [])
         ],
         categories: ['museums'],
         time: new Date(1479747600000),
-        creator: {
-          id: 100000536466879,
-          name: 'Chad Franzen',
-        },
         guests: 
         {
           pending: [],
           confirmed: [
             {
-              id: 100000536466879,
+              id: 1418723404822195,
               name: 'Chad Franzen',
             }
           ]
         },
-         creator: 
-         {
-          id: 100006483844947,
-          name: 'Violet Zhao',
-         }
+        creator: 
+          {
+            id: 100006483844947,
+            name: 'Violet Zhao',
+          }
       }, {
         _id: 1,
         title: 'Jogging in Central Park',
@@ -37,7 +33,7 @@ angular.module('Data', [])
           {"lat":40.7848582,"lng":-73.96965190000003}
         ],
         categories: ['fitness'],
-        time: new Date(1479913200000)
+        time: new Date(1479747600000)
       }, {
         _id: 2,
         title: 'Night Out at UCB',
@@ -62,12 +58,16 @@ angular.module('Data', [])
             {
               id: 100006483844947,
               name: 'Violet Zhao',
+            },
+            {
+              id: 1418723404822195,
+              name: 'Chad Franzen',
             }
           ]
         },
          creator: {
-          id: 100006483844947,
-          name: 'Violet Zhao',
+          id: 1418723404822195,
+          name: 'Chad Franzen',
         }
       }, {
         _id: 3,
