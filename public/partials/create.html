@@ -34,6 +34,7 @@
           <div ng-show = "last_loc.length" ng-repeat = "i in last_loc">
             <h5 >{{i}}</h5>
           </div>
+          
           <label> Location</label>
           <input ng-model="location" places-auto-complete on-place-changed="placeChanged()" placeholder="Enter a Location">
         </md-input-container>
