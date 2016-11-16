@@ -1,118 +1,121 @@
 
 <div ng-controller="SelectController">
 	
-	<md-toolbar layout-align="center">
-    	<div class="md-toolbar-tools" layout layout-align="center center">
-     		<span>Select Places You Like</span>
-   		</div>
-  	</md-toolbar>
+	<md-content>
+		<md-toolbar layout-align="center">
+	    	<div class="md-toolbar-tools" layout layout-align="center center">
+	     		<span>Select Places You Like</span>
+	   		</div>
+	  	</md-toolbar>
 
-	<div layout = "row" layout-align="space-around center" layout-padding> 
-		<div layout="column" flex = "50" ng-click="show.architecture = !show.architecture" >
-		
-			<div ng-show="!show.architecture" >	
-				<img ng-src="../data/categories/4.jpg"  height="100" width="150" md-whiteframe="4" >
+		<div layout = "row" layout-align="space-around center" layout-padding> 
+			<div layout="column" flex = "50" ng-click="show.architecture = !show.architecture" >
+			
+				<div ng-show="!show.architecture" >	
+					<img ng-src="../data/categories/4.jpg"  height="100" width="150" md-whiteframe="4" >
+				</div>
+
+				<div ng-show="show.architecture"> 
+					<img ng-src="../data/check.png"  width="150" height="100" md-whiteframe="4" >
+				</div>
+
 			</div>
 
-			<div ng-show="show.architecture"> 
-				<img ng-src="../data/check.png"  width="150" height="100" md-whiteframe="4" >
-			</div>
+			<div layout="column" flex = "50" ng-click="show.nature = !show.nature" >
+			
+				<div ng-show="!show.nature" >	
+					<img ng-src="../data/categories/hangzhou.jpg"  height="100" width="150" md-whiteframe="4" >
+				</div>
 
-		</div>
+				<div ng-show="show.nature"> 
+					<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+				</div>
 
-		<div layout="column" flex = "50" ng-click="show.nature = !show.nature" >
-		
-			<div ng-show="!show.nature" >	
-				<img ng-src="../data/categories/hangzhou.jpg"  height="100" width="150" md-whiteframe="4" >
-			</div>
-
-			<div ng-show="show.nature"> 
-				<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
-			</div>
-
-		</div>
-
-	</div>
-
-	<div layout = "row" layout-align="space-around center" layout-padding> 
-		<div layout="column" flex = "50" ng-click="show.nightlife = !show.nightlife" >
-		
-			<div ng-show="!show.nightlife" >	
-				<img ng-src="../data/categories/11_food.jpg"  height="100" width="150" md-whiteframe="4" >
-			</div>
-
-			<div ng-show="show.nightlife"> 
-				<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
 			</div>
 
 		</div>
 
-		<div layout="column" flex = "50" ng-click="show.recreation = !show.recreation" >
-		
-			<div ng-show="!show.recreation" >	
-				<img ng-src="../data/categories/91_recreation.jpg"  height="100" width="150" md-whiteframe="4" >
+		<div layout = "row" layout-align="space-around center" layout-padding> 
+			<div layout="column" flex = "50" ng-click="show.nightlife = !show.nightlife" >
+			
+				<div ng-show="!show.nightlife" >	
+					<img ng-src="../data/categories/11_food.jpg"  height="100" width="150" md-whiteframe="4" >
+				</div>
+
+				<div ng-show="show.nightlife"> 
+					<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+				</div>
+
 			</div>
 
-			<div ng-show="show.recreation"> 
-				<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
-			</div>
+			<div layout="column" flex = "50" ng-click="show.recreation = !show.recreation" >
+			
+				<div ng-show="!show.recreation" >	
+					<img ng-src="../data/categories/91_recreation.jpg"  height="100" width="150" md-whiteframe="4" >
+				</div>
 
+				<div ng-show="show.recreation"> 
+					<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+				</div>
+
+			</div>
 		</div>
-	</div>
 
 
-	<div layout = "row" layout-align="space-around center" layout-padding> 
-		<div layout="column" flex = "50" ng-click="show.fitness = !show.fitness" >
-		
-			<div ng-show="!show.fitness" >	
-				<img ng-src="../data/categories/7_nature.jpg"  height="100" width="150" md-whiteframe="4" >
+		<div layout = "row" layout-align="space-around center" layout-padding> 
+			<div layout="column" flex = "50" ng-click="show.fitness = !show.fitness" >
+			
+				<div ng-show="!show.fitness" >	
+					<img ng-src="../data/categories/7_nature.jpg"  height="100" width="150" md-whiteframe="4" >
+				</div>
+
+				<div ng-show="show.fitness"> 
+					<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+				</div>
+
 			</div>
+			<div layout="column" flex = "50" ng-click="show.food = !show.food" >
+			
+				<div ng-show="!show.food" >	
+					<img ng-src="../data/categories/barcelona.jpg"  height="100" width="150" md-whiteframe="4" >
+				</div>
 
-			<div ng-show="show.fitness"> 
-				<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+				<div ng-show="show.food"> 
+					<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+				</div>
+
 			</div>
-
 		</div>
-		<div layout="column" flex = "50" ng-click="show.food = !show.food" >
-		
-			<div ng-show="!show.food" >	
-				<img ng-src="../data/categories/barcelona.jpg"  height="100" width="150" md-whiteframe="4" >
-			</div>
 
-			<div ng-show="show.food"> 
-				<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
-			</div>
+		<div layout = "row" layout-align="space-around center" layout-padding> 
+			<div layout="column" flex = "50" ng-click="show.historical = !show.historical" >
+			
+				<div ng-show="!show.historical" >	
+					<img ng-src="../data/categories/14_historic.jpg"  height="100" width="150" md-whiteframe="4" >
+				</div>
 
+				<div ng-show="show.historical"> 
+					<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+				</div>
+
+			</div>
+			<div layout="column" flex = "50" ng-click="show.museums = !show.museums" >
+			
+				<div ng-show="!show.museums" >	
+					<img ng-src="../data/categories/39.jpg"  height="100" width="150" md-whiteframe="4" >
+				</div>
+
+				<div ng-show="show.museums"> 
+					<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+				</div>
+
+			</div>
 		</div>
-	</div>
 
-	<div layout = "row" layout-align="space-around center" layout-padding> 
-		<div layout="column" flex = "50" ng-click="show.historical = !show.historical" >
-		
-			<div ng-show="!show.historical" >	
-				<img ng-src="../data/categories/14_historic.jpg"  height="100" width="150" md-whiteframe="4" >
-			</div>
+		<div layout="row" layout-align="end" class = "next_btn" layout-wrap>
+	          <md-button class="md-raised md-primary" ng-click = "onNext()" ng-href="#/search">NEXT</md-button>
+	    </div>
+	</md-content>
 
-			<div ng-show="show.historical"> 
-				<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
-			</div>
 
-		</div>
-		<div layout="column" flex = "50" ng-click="show.museums = !show.museums" >
-		
-			<div ng-show="!show.museums" >	
-				<img ng-src="../data/categories/39.jpg"  height="100" width="150" md-whiteframe="4" >
-			</div>
-
-			<div ng-show="show.museums"> 
-				<img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
-			</div>
-
-		</div>
-	</div>
-
-	<div layout="row" layout-align="end" class = "next_btn" layout-wrap>
-          <md-button class="md-raised md-primary" ng-click = "onNext()" ng-href="#/search">NEXT</md-button>
-          
-    </div>
 </div>
