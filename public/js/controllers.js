@@ -1,6 +1,6 @@
 var controllers = angular.module('Controllers', ['ngMaterial', 'ngRoute', 'ngMap', 'Services']);
 
-controllers.controller('AuthController', function($scope, $location, Auth) {
+controllers.controller('AuthController', function($scope, $location, $rootScope, Auth) {
   $scope.isLoggingIn = function() {
     return $location.path() === '/login';
   };
@@ -8,6 +8,31 @@ controllers.controller('AuthController', function($scope, $location, Auth) {
   $scope.isSelecting = function() {
     return $location.path() === '/select';
   };
+
+  var getCurrentNavItem = function() {
+    var path = $location.path();
+    if (path.indexOf('mytours') >= 0) {
+      return 'mytours';
+    }
+    if (path.indexOf('discover') >= 0) {
+      return 'discover';
+    }
+    if (path.indexOf('create') >= 0) {
+      return 'create';
+    }
+    return 'search';
+  };
+
+  $scope.currentNavItem = getCurrentNavItem();
+  $rootScope.$on('$routeChangeSuccess', function() {
+    var path = $location.path();
+    if (path.indexOf('mytours') >= 0 ||
+        path.indexOf('discover') >= 0 ||
+        path.indexOf('create') >= 0 ||
+        path.indexOf('search') >= 0) {
+          $scope.currentNavItem = getCurrentNavItem();
+    } 
+  });
 });
 
 controllers.controller('LoginController', function($scope, $rootScope, $location, $window) {
@@ -117,7 +142,7 @@ controllers.controller('CreateController', function($scope) {
   console.log('CreateController running');
 });
 
-controllers.controller('TourController', function($scope, $rootScope, $routeParams, $mdDialog, Tours) {
+controllers.controller('TourController', function($scope, $rootScope, $routeParams, $mdDialog, Tours, $location) {
   $scope.getWaypoints = function(locations) {
     return locations.slice(1, locations.length-1).map(function(location) {
       return {location: location, stopover: true};
@@ -138,22 +163,52 @@ controllers.controller('TourController', function($scope, $rootScope, $routePara
   };
 
   $scope.userHasJoined = function() {
-    return _.contains($scope.tour.guests.confirmed, $rootScope.myself);
+    if (!$rootScope.myself) {
+      return false;
+    }
+    return !!_.find($scope.tour.guests.confirmed, function(guest) {
+      return guest.id == $rootScope.myself.id;
+    });
   };
 
   $scope.userHasPendingRequest = function() {
-    return _.contains($scope.tour.guests.pending, $rootScope.myself);
+    if (!$rootScope.myself) {
+      return false;
+    }
+    return !!_.find($scope.tour.guests.pending, function(guest) {
+      return guest.id == $rootScope.myself.id;
+    });
+  };
+
+  $scope.userIsCreator = function() {
+    return $rootScope.myself && ($scope.tour.creator.id == $rootScope.myself.id);
   };
 
   $scope.leave = function() {
     var guests = $scope.tour.guests;
+    var canPickNewLeader = $scope.userIsCreator() && $scope.tour.guests.confirmed.length > 1;
+    var needToCancel = $scope.userIsCreator() && !canPickNewLeader;
+    var title = needToCancel ? 'Cancel this tour?' : 'Really leave this tour?';
+
     var confirm = $mdDialog.confirm()
-          .title('Really leave this tour?')
+          .title(title)
           .ok('Yes')
           .cancel('No');
 
+    if (canPickNewLeader) {
+      confirm.textContent('A new leader will be chosen for this tour.');
+    }
+
     $mdDialog.show(confirm).then(function() {
-      guests.confirmed = _.without(guests.confirmed, $rootScope.myself);
+      guests.confirmed = _.reject(guests.confirmed, function(guest) {
+        return guest.id == $rootScope.myself.id;
+      });
+      if (needToCancel) {
+        Tours.remove($scope.tour._id);
+        $location.path('discover');
+      } else if (canPickNewLeader) {
+        $scope.tour.creator = guests.confirmed[0];
+      }
     });
   };
 
@@ -172,10 +227,14 @@ controllers.controller('TourController', function($scope, $rootScope, $routePara
   };
 });
 
-controllers.controller('ParticipantsController', function($scope, $mdDialog, tour) {
+controllers.controller('ParticipantsController', function($rootScope, $scope, $mdDialog, tour) {
   $scope.tour = tour;
   $scope.closeDialog = function() {
     $mdDialog.hide();
+  };
+
+  $scope.userIsCreator = function() {
+    return $rootScope.myself && ($scope.tour.creator.id == $rootScope.myself.id);
   };
 
   var guests = $scope.tour.guests;

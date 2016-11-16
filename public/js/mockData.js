@@ -9,30 +9,22 @@ angular.module('Data', [])
           {"lat":40.7614327,"lng":-73.97762160000002}
         ],
         categories: ['museums'],
-<<<<<<< 40bd905d768057a912662c8992e08c727a9fedde
         time: new Date(1479747600000),
-        creator: {
-          id: 100000536466879,
-          name: 'Chad Franzen',
-        },
         guests: 
         {
           pending: [],
           confirmed: [
             {
-              id: 100000536466879,
+              id: 1418723404822195,
               name: 'Chad Franzen',
             }
           ]
         },
-         creator: 
-         {
-          id: 100006483844947,
-          name: 'Violet Zhao',
-         }
-=======
-        time: new Date(1479913200000)
->>>>>>> small tweaks
+        creator: 
+          {
+            id: 100006483844947,
+            name: 'Violet Zhao',
+          }
       }, {
         _id: 1,
         title: 'Jogging in Central Park',
@@ -66,12 +58,16 @@ angular.module('Data', [])
             {
               id: 100006483844947,
               name: 'Violet Zhao',
+            },
+            {
+              id: 1418723404822195,
+              name: 'Chad Franzen',
             }
           ]
         },
          creator: {
-          id: 100006483844947,
-          name: 'Violet Zhao',
+          id: 1418723404822195,
+          name: 'Chad Franzen',
         }
       }, {
         _id: 3,
