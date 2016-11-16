@@ -9,6 +9,7 @@ angular.module('Data', [])
           {"lat":40.7614327,"lng":-73.97762160000002}
         ],
         categories: ['museums'],
+<<<<<<< 40bd905d768057a912662c8992e08c727a9fedde
         time: new Date(1479747600000),
         creator: {
           id: 100000536466879,
@@ -29,6 +30,9 @@ angular.module('Data', [])
           id: 100006483844947,
           name: 'Violet Zhao',
          }
+=======
+        time: new Date(1479913200000)
+>>>>>>> small tweaks
       }, {
         _id: 1,
         title: 'Jogging in Central Park',
@@ -37,7 +41,7 @@ angular.module('Data', [])
           {"lat":40.7848582,"lng":-73.96965190000003}
         ],
         categories: ['fitness'],
-        time: new Date(1479913200000)
+        time: new Date(1479747600000)
       }, {
         _id: 2,
         title: 'Night Out at UCB',

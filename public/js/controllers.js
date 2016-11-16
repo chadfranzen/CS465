@@ -62,7 +62,6 @@ controllers.controller('SearchController', function($scope, $timeout, $location,
   }
 
   var search = _.debounce(function() {
-    console.log('searching');
     $scope.results = Tours.search($scope.searchParams);
   }, 50);
 
@@ -85,7 +84,6 @@ controllers.controller('SearchController', function($scope, $timeout, $location,
 
   $scope.centerChanged = function() {
     var center = this.getCenter();
-    console.log(center);
     $scope.searchParams.location = {
       lat: center.lat(),
       lng: center.lng()
@@ -267,8 +265,6 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
       }
       
 
-
-
       $scope.tour.locations.push(obj);
       for ( var i in $scope.category_select)
       {
@@ -277,7 +273,6 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
               $scope.tour.categories.push(i);
           }
       }
-
 
       MockData.push($scope.tour);
       console.log(MockData);
