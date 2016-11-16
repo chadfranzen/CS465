@@ -280,6 +280,7 @@ body, html {
 .fontFace {
   font-family: Mightype;
   font-size: 5em;
+  margin-bottom: 0.5em;
 
 
 
@@ -303,6 +304,24 @@ body, html {
   padding-right: 15px; 
 }
 
+.container {
+  display: block;
+
+}
+
+.selected {
+  height: 100%;
+  
+  background-color: #BDAEC6;
+  
+  
+
+} 
+
+.next_btn{
+  margin-right: 10px;
+  margin-top: -10px;
+}
 
 
 

@@ -68,9 +68,25 @@ app.config(function($mdThemingProvider, $routeProvider) {
     }).when('/login', {
       templateUrl: 'partials/login.html',
       controller: 'LoginController'
+    }).when('/select', {
+      templateUrl: 'partials/select.html',
+      controller: 'SelectController'
     }).otherwise({
       redirectTo: '/discover'
     });
+});
+
+app.directive('imageCheckbox', function() {
+  return {
+    restrict: 'A',
+    link: function(scope, el, attr) {
+      scope.isSelected = !el.find('input').val() == 'false';
+      el.on('click', function() {
+        scope.isSelected = !scope.isSelected;
+        scope.$apply();
+      });
+    }
+  }
 });
 
 app.run(function($rootScope, $window, Auth) {

@@ -4,6 +4,10 @@ controllers.controller('AuthController', function($scope, $location, Auth) {
   $scope.isLoggingIn = function() {
     return $location.path() === '/login';
   };
+
+  $scope.isSelecting = function() {
+    return $location.path() === '/select';
+  };
 });
 
 controllers.controller('LoginController', function($scope, $rootScope, $location, $window) {
@@ -43,6 +47,13 @@ controllers.controller('SearchController', function($scope, $timeout, $location,
     endDate: nextMonth
   };
 
+  // Krishna's code 
+
+  if (typeof $rootScope.categories !== "undefined")
+  {
+    $scope.searchParams.categories = $rootScope.categories;
+  }
+
   var savedState = State.get();
   if (savedState) {
     for (var key in savedState) {
@@ -68,7 +79,6 @@ controllers.controller('SearchController', function($scope, $timeout, $location,
 
   $scope.placeChanged = function() {
     var location = this.getPlace().geometry.location;
-    console.log(location);
     $scope.searchParams.location = location;
     map.setCenter(location);
   };
@@ -227,6 +237,8 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
       guests: {pending:[], confirmed:[]}
       
     };
+
+
     $scope.tour.creator = $rootScope.myself;
     $scope.category_select = {};  
     $scope.tour._id = MockData.length;
@@ -275,6 +287,40 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
     
 
     
+});
+
+
+
+controllers.controller('SelectController', function($scope, $rootScope) 
+{
+
+  $scope.show = {
+    architecture: false, 
+    nature: false, 
+    nightlife: false, 
+    recreation: false, 
+    fitness: false, 
+    food: false, 
+    historical: false, 
+    museums: false
+  };
+
+  $scope.onNext = function()
+  {
+    $rootScope.categories = $scope.show;
+    console.log($rootScope.categories);
+  };
+    // categories: {
+    //   museums: true,
+    //   architecture: true,
+    //   nature: true,
+    //   food: true,
+    //   recreation: true,
+    //   fitness: true,
+    //   historical: true,
+    //   nightlife: true
+    // }
+
 });
 
 
