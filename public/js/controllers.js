@@ -16,7 +16,7 @@ controllers.controller('LoginController', function($scope, $rootScope, $location
   };
   $rootScope.$watch('myself', function(myself) {
     if (myself) {
-      $location.path('discover');
+      $location.path('select');
     }
   });
 });
