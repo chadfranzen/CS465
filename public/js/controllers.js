@@ -334,6 +334,7 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
         p["discussion"] = [];
 
         $scope.tour.plans.push(p);
+
       }
       
 
@@ -350,8 +351,10 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
 
 
       MockData.push($scope.tour);
-      console.log(MockData);
+      console.log(JSON.stringify(MockData[MockData.length -1]));
       console.log($scope.plans);
+
+
 
     };
     

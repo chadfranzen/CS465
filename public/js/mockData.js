@@ -69,7 +69,9 @@ angular.module('Data', [])
           id: 1418723404822195,
           name: 'Chad Franzen',
         }
-      }, {
+      },
+
+       {
         _id: 3,
         title: 'Halloween Tour!',
         description: 'Let\'s get spooky. Lorem ipsum dolor sit amet, elementum justo eget dui in, libero in, in et vestibulum parturient consequat molestie. Enim suspendisse ipsum. Suspendisse ipsum duis egestas.',
@@ -144,6 +146,7 @@ angular.module('Data', [])
           ]
         }
       },
+
     ];
 
   });
