@@ -216,39 +216,50 @@ controllers.controller('DiscussController', function($scope, $rootScope, $routeP
 
 
 
-controllers.controller('SelectController', function($scope) {
-  $scope.categories = ['city', 'adventure', 'historic'];
-
-
-});
-
 controllers.controller('CreateController', function($scope, $rootScope, MockData) {
   
     $scope.tour = {
       title: '',
-      location: '',
-      categories: {}, 
+      categories: [], 
       plan: [],
       
     };
     $scope.tour.creator = $rootScope.myself;
-      
+    $scope.category_select = {};  
     $scope.tour._id = MockData.length;
+    $scope.location = '';
+
+    $scope.placeChanged = function() {
+        var locations = this.getPlace().geometry.location;
+
+        $scope.tour.locations = location;
+
+      };
 
     $scope.onSubmit = function (){
-      
+    
+
+      for ( var i in $scope.category_select)
+      {
+          if ($scope.category_select[i])
+          {
+              $scope.tour.categories.push(i);
+          }
+      }
+
+
 
       MockData.push($scope.tour);
       console.log(MockData);
+      console.log($scope.tour.locations);
+      console.log(MockData[3].locations)
 
-    }
+
+    };
     
 
     
 });
-
-
-
 
 
 

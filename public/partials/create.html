@@ -1,9 +1,9 @@
 
 <div ng-controller="CreateController" layout="column" ng-cloak="" >
   <md-toolbar layout-align="center">
-  	<div class="md-toolbar-tools" layout layout-align="center center">
-    	<span>Create</div>
-  	</div>
+    <div class="md-toolbar-tools" layout layout-align="center center">
+      <span>Create</div>
+    </div>
   </md-toolbar>
   <br><br>
 
@@ -23,7 +23,7 @@
           <md-input-container flex="">
             <input mdc-datetime-picker date="true" time="true" type="text" id="time" short-time="true"
                  placeholder="Date & Time"
-                 ng-model="tour.date">
+                 ng-model="tour.time">
           </md-input-container>
 
         </div>
@@ -49,16 +49,16 @@
           <br><br>
           <div layout="row" >
             <div flex="50">
-              <md-checkbox ng-model="tour.categories.museums">Museums</md-checkbox>
-              <md-checkbox ng-model="tour.categories.architecture">Architecture</md-checkbox>
-              <md-checkbox ng-model="tour.categories.nature">Nature</md-checkbox>
-              <md-checkbox ng-model="tour.categories.food">Food</md-checkbox>
+              <md-checkbox  ng-model="category_select.museums">Museums</md-checkbox>
+              <md-checkbox  ng-model="category_select.architecture">Architecture</md-checkbox>
+              <md-checkbox  ng-model="category_select.nature">Nature</md-checkbox><br>
+              <md-checkbox  ng-model="category_select.food">Food</md-checkbox>
             </div>
             <div flex="50" >
-              <md-checkbox ng-model="tour.categories.recreation">Recreation</md-checkbox>
-              <md-checkbox ng-model="tour.categories.fitness">Fitness</md-checkbox>
-              <md-checkbox ng-model="tour.categories.historical">Historical</md-checkbox>
-              <md-checkbox ng-model="tour.categories.nightlife">Nightlife</md-checkbox>
+              <md-checkbox ng-model="category_select.recreation">Recreation</md-checkbox>
+              <md-checkbox ng-model="category_select.fitness">Fitness</md-checkbox>
+              <md-checkbox ng-model="category_select.historical">Historical</md-checkbox>
+              <md-checkbox ng-model="category_select.nightlife">Nightlife</md-checkbox>
             </div>
           </div>
         </md-input-container>
