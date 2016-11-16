@@ -9,7 +9,26 @@ angular.module('Data', [])
           {"lat":40.7614327,"lng":-73.97762160000002}
         ],
         categories: ['museums'],
-        time: new Date(1479747600000)
+        time: new Date(1479747600000),
+        creator: {
+          id: 100000536466879,
+          name: 'Chad Franzen',
+        },
+        guests: 
+        {
+          pending: [],
+          confirmed: [
+            {
+              id: 100000536466879,
+              name: 'Chad Franzen',
+            }
+          ]
+        },
+         creator: 
+         {
+          id: 100006483844947,
+          name: 'Violet Zhao',
+         }
       }, {
         _id: 1,
         title: 'Jogging in Central Park',
@@ -27,7 +46,29 @@ angular.module('Data', [])
           {"lat":40.74753,"lng":-73.99763999999999}
         ],
         categories: ['food', 'recreation', 'nightlife'],
-        time: new Date(1480194000000)
+        time: new Date(1480194000000),
+        guests: {
+          pending: [
+            {
+              id: 1400259734,
+              name: 'Neha Agarwal'
+            },
+            {
+              id: 1650481413,
+              name: 'Krishna Dusad',
+            }
+          ],
+          confirmed: [
+            {
+              id: 100006483844947,
+              name: 'Violet Zhao',
+            }
+          ]
+        },
+         creator: {
+          id: 100006483844947,
+          name: 'Violet Zhao',
+        }
       }, {
         _id: 3,
         title: 'Halloween Tour!',
