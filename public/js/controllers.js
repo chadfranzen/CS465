@@ -89,7 +89,8 @@ controllers.controller('SearchController', function($scope, $timeout, $location,
     for (var key in savedState) {
       $scope[key] = savedState[key];
     }
-  } else if (queryParam) {
+  }
+  if (queryParam) {
     $scope.searchParams.location = queryParam;
   }
 
