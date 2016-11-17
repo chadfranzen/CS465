@@ -281,6 +281,8 @@ body, html {
 
 .full { 
   height: 100%;
+  width: 100%;
+  position: absolute;
   background-image: url("../data/background.jpg");
   background-color: #BDAEC6;
   background-size: cover;
