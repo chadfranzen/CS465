@@ -80,10 +80,17 @@ controllers.controller('SearchController', function($scope, $timeout, $location,
   }
 
   var savedState = State.get();
+  var queryParam; 
+  try {
+    queryParam = JSON.parse($location.search().center);
+  } catch(err) {console.log(err);}
+
   if (savedState) {
     for (var key in savedState) {
       $scope[key] = savedState[key];
     }
+  } else if (queryParam) {
+    $scope.searchParams.location = queryParam;
   }
 
   var search = _.debounce(function() {
