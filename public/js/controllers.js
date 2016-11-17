@@ -138,9 +138,6 @@ controllers.controller('MyToursController', function($scope, Tours) {
   };
 });
 
-controllers.controller('CreateController', function($scope) {
-  console.log('CreateController running');
-});
 
 controllers.controller('TourController', function($scope, $rootScope, $routeParams, $mdDialog, Tours, $location) {
   $scope.getWaypoints = function(locations) {
@@ -297,7 +294,6 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
     obj = [];
 
 
-    $scope.tour.creator = $rootScope.myself;
     $scope.category_select = {};  
     $scope.tour._id = MockData.length;
     $scope.location = '';
@@ -325,7 +321,8 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
     }
 
     $scope.onSubmit = function (){
-
+      $scope.tour.time = new Date($scope.tour.time);
+      $scope.tour.creator = $rootScope.myself;
       for (j =0; j< $scope.plan_titles.length; j++)
       {
         var p = {}

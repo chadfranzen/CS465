@@ -90,7 +90,7 @@ services.factory('Tours', function($rootScope, MockData) {
         var isInDateRange =
           tour.time >= searchParams.startDate && tour.time <= searchParams.endDate;
 
-        var isCloseEnough = distance(searchParams.location, tour.locations[0]) < 20;
+        var isCloseEnough = distance(searchParams.location, tour.locations[0]) < 200;
 
         return containsAllKeywords && matchesCategories && 
                isInDateRange && isCloseEnough;
