@@ -9,7 +9,7 @@ angular.module('Data', [])
           {"lat":40.7614327,"lng":-73.97762160000002}
         ],
         categories: ['museums'],
-        time: new Date(1479747600000),
+        time: new Date("2016-12-16T19:00:00.000Z"),
         guests: 
         {
           pending: [],
@@ -43,15 +43,6 @@ angular.module('Data', [])
           }
         ]
       }, {
-        _id: 1,
-        title: 'Jogging in Central Park',
-        description: 'Come get some exercise!',
-        locations: [
-          {"lat":40.7848582,"lng":-73.96965190000003}
-        ],
-        categories: ['fitness'],
-        time: new Date(1479747600000)
-      }, {
         _id: 2,
         title: 'Night Out at UCB',
         description: 'Food and comedy!',
@@ -59,7 +50,7 @@ angular.module('Data', [])
           {"lat":40.74753,"lng":-73.99763999999999}
         ],
         categories: ['food', 'recreation', 'nightlife'],
-        time: new Date(1480194000000),
+        time: new Date("2016-12-11T20:00:00.000Z"),
         guests: {
           pending: [
             {
@@ -168,7 +159,7 @@ angular.module('Data', [])
           }
         ],
         categories: ['recreation'],
-        time: new Date(1480539600000),
+        time: new Date("2016-12-11T19:00:00.000Z"),
         guests: {
           pending: [
             {
@@ -206,7 +197,7 @@ angular.module('Data', [])
               [{"id":"100006483844947","name":"Violet Zhao"}]},
         "creator":{"id":"100006483844947","name":"Violet Zhao"},
         "_id":4,
-        "time": new Date("2016-11-23T19:00:00.000Z"),
+        "time": new Date("2016-12-16T19:00:00.000Z"),
         "description":"Let's get into the fall spirit with some apple picking! Anyone is welcome!"
       },
       {
@@ -219,11 +210,11 @@ angular.module('Data', [])
         "guests":{"pending":[],"confirmed":[{"id":"10209525432366598","name":"Krishna Dusad"}]},
         "creator":{"id":"10209525432366598","name":"Krishna Dusad"},
         "_id":5,
-        "time": new Date("2016-11-26T02:30:00.000Z"),
+        "time": new Date("2016-12-15T02:30:00.000Z"),
         "description":"Nothing says \"University of Illinois\" quite like a bar crawl. So let's have fun! All are welcome! Unless you're, like, twelve."
       },
-      {"title":"The Nutcracker Show","categories":["museums","recreation","nightlife"],"plans":[{"text":"Lets get Dinner Before!","time":null,"discussion":[]}],"locations":[{"lat":40.1080232,"lng":-88.22273039999999}],"guests":{"pending":[],"confirmed":[{"id":"10211192248907629","name":"Neha Agarwal"}]},"_id":6,"time": new Date("2016-12-03T13:35:00.000Z"),"description":"TRYON FESTIVAL THEATRE\nChampaign-Urbana Ballet\nChampaign-Urbana Symphony Orchestra","creator":{"id":"10211192248907629","name":"Neha Agarwal"}},
-      {"title":"Illinois Football Game","categories": ["fitness","recreation","food"],"plans":[{"text":"Who wants to Tailgate?","time":null,"discussion":[]},{"text":"What section will seats be?","time":null,"discussion":[]}],"locations":[{"lat":40.1010975,"lng":-88.23646500000001},{"lat":40.09932680000001,"lng":-88.23595690000002}],"guests":{"pending":[],"confirmed":[{"id":"10211192248907629","name":"Neha Agarwal"}]},"_id":7,"time": new Date("2016-11-19T20:00:00.000Z"),"description":"Lets go watch some football, University of Illinois versus Wisconsin. ","creator":{"id":"10211192248907629","name":"Neha Agarwal"}},
+      {"title":"The Nutcracker Show","categories":["museums","recreation","nightlife"],"plans":[{"text":"Lets get Dinner Before!","time":null,"discussion":[]}],"locations":[{"lat":40.1080232,"lng":-88.22273039999999}],"guests":{"pending":[],"confirmed":[{"id":"10211192248907629","name":"Neha Agarwal"}]},"_id":6,"time": new Date("2016-12-13T13:35:00.000Z"),"description":"TRYON FESTIVAL THEATRE\nChampaign-Urbana Ballet\nChampaign-Urbana Symphony Orchestra","creator":{"id":"10211192248907629","name":"Neha Agarwal"}},
+      {"title":"Illinois Football Game","categories": ["fitness","recreation","food"],"plans":[{"text":"Who wants to Tailgate?","time":null,"discussion":[]},{"text":"What section will seats be?","time":null,"discussion":[]}],"locations":[{"lat":40.1010975,"lng":-88.23646500000001},{"lat":40.09932680000001,"lng":-88.23595690000002}],"guests":{"pending":[],"confirmed":[{"id":"10211192248907629","name":"Neha Agarwal"}]},"_id":7,"time": new Date("2016-12-19T20:00:00.000Z"),"description":"Lets go watch some football, University of Illinois versus Wisconsin. ","creator":{"id":"10211192248907629","name":"Neha Agarwal"}},
       {"title":"Times Square Tour","categories": ["nightlife","recreation","food","historical","architecture"],"plans":[{"text":"M&M world!","time":null,"discussion":[]},{"text":"I love NY shirt!","time":null,"discussion":[]}],"locations":[{"lat":40.75901100000001,"lng":-73.98447220000003}],"guests":{"pending":[],"confirmed":[{"id":"10211192248907629","name":"Neha Agarwal"}, {
               id: 1418723404822195,
               name: 'Chad Franzen',
