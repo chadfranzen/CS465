@@ -19,7 +19,7 @@ services.directive('profilePic', function($compile) {
     restrict: 'E',
     link: function($scope, $element, $attrs) {
       var id = $attrs.user.id;
-      var DOM = angular.element('<img class="profile-pic md-user-avatar" ng-src="//graph.facebook.com/' + $scope.user.id + '/picture?type=square&height=100&width=100">');
+      var DOM = angular.element('<a target="_blank" href="'+$scope.user.link+'"><img class="profile-pic md-user-avatar" ng-src="//graph.facebook.com/' + $scope.user.id + '/picture?type=square&height=100&width=100"></a>');
       var $e = $compile(DOM)($scope);
       $element.replaceWith($e);
     }
@@ -150,8 +150,7 @@ services.factory('Auth', function($rootScope, $route, $location) {
       });
     },
     getUserInfo: function() {
-      FB.api('/me', {fields: 'id,name'}, function(res) {
-        console.log('Got user info');
+      FB.api('/me', {fields: 'id,name,link'}, function(res) {
         $rootScope.$apply(function() {
           $rootScope.myself = res;
         });
