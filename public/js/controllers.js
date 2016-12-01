@@ -35,7 +35,7 @@ controllers.controller('AuthController', function($scope, $location, $rootScope,
   });
 });
 
-controllers.controller('LoginController', function($scope, $rootScope, $location, $window) {
+controllers.controller('LoginController', function($scope, $rootScope, $location, $window, $mdDialog) {
   $scope.fb_login = function() {
     FB.login( function() {}, { scope: 'email,public_profile' } );
   };
@@ -44,6 +44,18 @@ controllers.controller('LoginController', function($scope, $rootScope, $location
       $location.path('select');
     }
   });
+
+  $scope.showHelp = function(ev) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.body))
+        .clickOutsideToClose(true)
+        .title('Welcome to Embark!')
+        .textContent('Embark is an easy way to explore the world with like-minded travelers! Join tours organized by people from around the world, or create your own adventure! With Embark, you never have to travel alone. Just log in with Facebook to get started!')
+        .ok('Got it!')
+        .targetEvent(ev)
+    );
+  }
 });
 
 controllers.controller('DiscoverController', function($scope) {

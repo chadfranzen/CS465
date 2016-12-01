@@ -375,6 +375,15 @@ body, html {
   position: relative;
 }
 
+.login-help {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.login-help md-icon {
+  color: #ede9ef;
+}
+
 
 
 
