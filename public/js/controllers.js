@@ -369,7 +369,7 @@ controllers.controller('CreateController', function($scope, $rootScope, MockData
 
 
 
-controllers.controller('SelectController', function($scope, $rootScope) 
+controllers.controller('SelectController', function($scope, $rootScope, $mdDialog) 
 {
 
   $scope.show = {
@@ -383,11 +383,24 @@ controllers.controller('SelectController', function($scope, $rootScope)
     museums: false
   };
 
-  $scope.onNext = function()
+  $scope.onNext = function(ev)
   {
     $rootScope.categories = $scope.show;
     console.log($rootScope.categories);
   };
+
+
+  $scope.showHelp = function(ev) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.body))
+        .clickOutsideToClose(true)
+        .title('What\'s this for?')
+        .textContent('By telling us your interests, we will be able to personalize your search results and give you recommendations for tours you might be interested in!')
+        .ok('Got it!')
+        .targetEvent(ev)
+    );
+  }
 
 
 });

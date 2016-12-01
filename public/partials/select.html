@@ -1,19 +1,27 @@
 <md-toolbar layout-align="center">
   <div class="md-toolbar-tools" layout layout-align="center center">
-    <span>Select Places You Like</span>
+    <span flex></span>
+    <span>Select Your Interests</span>
+    <span style="text-align:right" flex>
+      <md-button ng-click="showHelp($event)">
+        <md-icon>help</md-icon>
+      </md-button>
+    </span>
   </div>
 </md-toolbar>
-<md-content>
+<md-content class="interest-select">
 
   <div layout = "row" layout-align="space-around center" layout-padding> 
     <div layout="row" flex = "50" ng-click="show.architecture = !show.architecture" >
       <div flex></div>
       <div ng-show="!show.architecture" >	
         <img ng-src="../data/categories/4.jpg"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label">Architecture</div>
       </div>
 
       <div ng-show="show.architecture"> 
         <img ng-src="../data/check.png"  width="150" height="100" md-whiteframe="4" >
+        <div class="img-label-clicked">Architecture</div>
       </div>
       <div flex></div>
     </div>
@@ -22,10 +30,12 @@
       <div flex></div>
       <div ng-show="!show.nature" >	
         <img ng-src="../data/categories/hangzhou.jpg"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label">Nature</div>
       </div>
 
       <div ng-show="show.nature"> 
         <img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label-clicked">Nature</div>
       </div>
       <div flex></div>
     </div>
@@ -37,10 +47,12 @@
       <div flex></div>
       <div ng-show="!show.nightlife" >	
         <img ng-src="../data/categories/11_food.jpg"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label">Nightlife</div>
       </div>
 
       <div ng-show="show.nightlife"> 
         <img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label-clicked">Nightlife</div>
       </div>
       <div flex></div>
     </div>
@@ -50,10 +62,12 @@
       <div flex></div>
       <div ng-show="!show.recreation" >	
         <img ng-src="../data/categories/91_recreation.jpg"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label">Recreation</div>
       </div>
 
       <div ng-show="show.recreation"> 
         <img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label-clicked">Recreation</div>
       </div>
 
       <div flex></div>
@@ -67,10 +81,12 @@
       <div flex></div>
       <div ng-show="!show.fitness" >	
         <img ng-src="../data/categories/7_nature.jpg"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label">Fitness</div>
       </div>
 
       <div ng-show="show.fitness"> 
         <img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label-clicked">Fitness</div>
       </div>
       <div flex></div>
 
@@ -80,10 +96,12 @@
       <div flex></div>
       <div ng-show="!show.food" >	
         <img ng-src="../data/categories/barcelona.jpg"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label">Food</div>
       </div>
 
       <div ng-show="show.food"> 
         <img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label-clicked">Food</div>
       </div>
       <div flex></div>
 
@@ -96,10 +114,12 @@
       <div flex></div>
       <div ng-show="!show.historical" >	
         <img ng-src="../data/categories/14_historic.jpg"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label">Historical</div>
       </div>
 
       <div ng-show="show.historical"> 
         <img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label-clicked">Historical</div>
       </div>
       <div flex></div>
 
@@ -109,10 +129,12 @@
       <div flex></div>
       <div ng-show="!show.museums" >	
         <img ng-src="../data/categories/39.jpg"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label">Museums</div>
       </div>
 
       <div ng-show="show.museums"> 
         <img ng-src="../data/check.png"  height="100" width="150" md-whiteframe="4" >
+        <div class="img-label-clicked">Museums</div>
       </div>
       <div flex></div>
 
@@ -120,7 +142,7 @@
   </div>
 
   <div layout="row" layout-align="end" class = "next_btn" layout-wrap>
-    <md-button class="md-raised md-primary" ng-click = "onNext()" ng-href="#/discover">NEXT</md-button>
+    <md-button class="md-raised md-primary" ng-click = "onNext()" ng-href="#/search">NEXT</md-button>
   </div>
 </md-content>
 

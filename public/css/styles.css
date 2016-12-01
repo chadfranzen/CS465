@@ -351,9 +351,29 @@ body, html {
 }
 
 
+.img-label {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  text-align: center;
+  bottom: 4px;
+  color: white;
+  padding: 5px 0px;
+  background-color: rgba(0,0,0,0.7);
+}
+.img-label-clicked {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  text-align: center;
+  bottom: 4px;
+  color: #5c5e67;
+  padding: 5px 0px;
+}
 
-
-
+.interest-select > div > div > div {
+  position: relative;
+}
 
 
 
