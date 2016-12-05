@@ -8,7 +8,7 @@
 </md-toolbar>
 <md-content flex id="mytours" layout="column">
   <md-list>
-    <md-list-item ng-href="#/tour/{{tour._id}}" class="tour" ng-repeat="tour in tours | orderBy:'time'">
+    <md-list-item ng-show="tours.length !== 0" ng-href="#/tour/{{tour._id}}" class="tour" ng-repeat="tour in tours | orderBy:'time'">
       <div class="tour-inner" layout="row">
         <div class="tour-date" flex="33" layout="column" layout-align="center center">
           <div class="md-headline" md-colors="{color:'primary'}">
@@ -27,4 +27,12 @@
       </div>
     </md-list-item>
   </md-list>
+
+  <div flex="" ng-show="tours.length ===0" layout="column" layout-align="start center">
+   <div class="md-headline" md-colors="{color:'primary'}"> 
+      <h4>&nbsp; Looks like you have no tours.
+      </h4>
+    </div>
+
+  </div>
 </md-content>

@@ -46,7 +46,8 @@
   </div>
 
   <!-- Map View -->
-  <ng-map ng-hide="listView" id="searchmap"
+  
+  <ng-map ng-hide="listView || results.length === 0 " id="searchmap" 
     disable-default-u-i="true" default-style="false"
     center="{{searchParams.location ? [searchParams.location.lat, searchParams.location.lng] : 'current-position'}}"
     on-center-changed="centerChanged()"
@@ -61,12 +62,24 @@
   </ng-map>
 
   <!-- List View -->
-  <md-content class="search-list" flex ng-show="listView">
+  <md-content class="search-list" flex ng-show="listView && results.length !== 0">
     <md-list>
       <md-list-item ng-href="#/tour/{{result._id}}" class="md-2-line" ng-repeat="result in results">
         <div class="md-list-item-text">
           <h3>{{result.title}}</h3>
           <p>{{result.description | characters:45}}</p>
+        </div>
+        <md-divider></md-divider>
+      </md-list-item>
+    </md-list>
+  </md-content>
+
+  <md-content class="search-list" flex ng-show="results.length === 0">
+    <md-list>
+      <md-list-item>
+        <div class="md-list-item-text">
+          <h3>Sorry. No results showed up!</h3>
+          <p>Maybe try seraching something else?</p>
         </div>
         <md-divider></md-divider>
       </md-list-item>

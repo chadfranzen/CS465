@@ -35,16 +35,18 @@
             <h5 >{{i}}</h5>
           </div>
           
+
           <label> Location</label>
-          <input ng-model="location" places-auto-complete on-place-changed="placeChanged()" placeholder="Enter a Location">
+          <div layout="row" layout-align="space-around center">
+              <div flex="80">
+                <input ng-model="location" places-auto-complete on-place-changed="placeChanged()" placeholder="Add a Location">
+              </div>
+              
+              <md-button   flex= "" class="md-raised md-primary join-btn shift_margin" ng-click="locAdd()" ng-disabled="!location.length"><i class="fa fa-plus"></i></md-button>
+
+          </div>
         </md-input-container>
         
-        <div layout="row" layout-align = "center start" fb-login>
-          <div flex="10"></div>
-          <md-button   flex= "" class="md-raised md-primary join-btn shift_margin" ng-click="locAdd()" ng-disabled="!location.length">ADD LOCATION</md-button>
-          <div flex="10"></div>
-        </div>
-
         <md-input-container class="md-block">
           <label>Description</label>
           <textarea ng-model="tour.description" md-maxlength="150" rows="5" md-select-on-focus=""></textarea>
